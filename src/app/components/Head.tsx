@@ -37,7 +37,7 @@ const Head = ({ onSettingsClick }: { onSettingsClick: () => void }): JSX.Element
                   <LinkListItem href="https://yml.publiccode.tools/">
                     {t("editor.needhelp")}
                   </LinkListItem>
-                  <LinkListItem href="https://github.com/puzzle/publiccode-editor">
+                  <LinkListItem href="https://github.com/swiss/publiccode-editor">
                     {t("editor.source_code")}
                   </LinkListItem>
                 </LinkList>
