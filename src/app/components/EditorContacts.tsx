@@ -120,7 +120,8 @@ export default function EditorContacts(): JSX.Element {
           </Table>
         )}
         <Button
-          color="primary"
+          color="secondary"
+          outline
           onClick={() =>
             append({ name: "", email: "", phone: "", affiliation: "" })
           }
