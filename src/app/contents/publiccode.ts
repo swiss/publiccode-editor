@@ -13,6 +13,7 @@ export default interface PublicCode {
   applicationSuite?: string;
   url: string;
   landingURL?: string;
+  organisationURI?: string;
   isBasedOn?: string;
   softwareVersion?: string;
   releaseDate?: string; // “YYYY-MM-DD”

@@ -12,6 +12,7 @@ import useFormPersist from "react-hook-form-persist";
 import { useTranslation } from "react-i18next";
 import { RequiredDeep } from "type-fest";
 import licenses from "../../generated/licenses.json";
+import organizationData from "../data/organizations.json";
 import { allLangs, displayName } from "../../i18n";
 import categories from "../contents/categories";
 import { DEFAULT_COUNTRY_SECTIONS } from "../contents/constants";
@@ -149,7 +150,7 @@ const isNotTheSameVersion = (version1: string, version2: string) => {
 
 export default function Editor() {
   //#region UI
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const { countrySections } = useCountryStore();
   const { resetWarnings, setWarnings } = useWarningStore();
   const {
@@ -163,6 +164,14 @@ export default function Editor() {
   } = useYamlStore();
   const { languages, setLanguages, resetLanguages } = useLanguagesStore();
   const { setCountrySections } = useCountryStore();
+
+  const organizations = organizationData.flatMap(data =>
+    data.organizations.map(organization => ({
+      text: organization.name[i18n.language as keyof typeof organization.name] || organization.name.de,
+      value: organization.id,
+      group: data.name[i18n.language as keyof typeof data.name] || data.name.de,
+    }))
+  );
 
   const getNestedValue = (
     obj: PublicCodeWithDeprecatedFields,
@@ -534,6 +543,12 @@ export default function Editor() {
               <span>
                 <EditorInput<"landingURL"> fieldName="landingURL" />
               </span>
+              <div className="mt-5">
+                <EditorSelect<"organisationURI">
+                  fieldName="organisationURI"
+                  data={organizations}
+                />
+              </div>
               <span>
                 <EditorInput<"isBasedOn"> fieldName="isBasedOn" />
               </span>
