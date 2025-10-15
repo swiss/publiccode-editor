@@ -1,0 +1,779 @@
+[
+  {
+    "id": "https://ld.admin.ch/department/I",
+    "name": {
+      "de": "Eidgenössisches Departement für auswärtige Angelegenheiten",
+      "fr": "Département fédéral des affaires étrangères",
+      "it": "Dipartimento federale degli affari esteri"
+    },
+    "abbreviation": {
+      "de": "EDA",
+      "fr": "DFAE",
+      "it": "DFAE"
+    },
+    "organizations": [
+      {
+        "id": "https://ld.admin.ch/office/I.1.5",
+        "name": {
+          "de": "Direktion für Entwicklung und Zusammenarbeit",
+          "fr": "Direction du développement et de la coopération",
+          "it": "Direzione dello sviluppo e della cooperazione"
+        }
+      },
+      {
+        "id": "https://ld.admin.ch/office/I.1.7",
+        "name": {
+          "de": "Direktion für Ressourcen",
+          "fr": "Direction des ressources",
+          "it": "Direzione delle risorse"
+        }
+      },
+      {
+        "id": "https://ld.admin.ch/office/I.1.8",
+        "name": {
+          "de": "Konsularische Direktion",
+          "fr": "Direction consulaire",
+          "it": "Direzione consolare"
+        }
+      },
+      {
+        "id": "https://ld.admin.ch/office/I.1.1",
+        "name": {
+          "de": "Generalsekretariat",
+          "fr": "Secrétariat général",
+          "it": "Segreteria generale"
+        }
+      },
+      {
+        "id": "https://ld.admin.ch/office/I.1.2",
+        "name": {
+          "de": "Staatssekretariat EDA",
+          "fr": "Secrétariat d'État du DFAE",
+          "it": "Segreteria di Stato del DFAE"
+        }
+      },
+      {
+        "id": "https://ld.admin.ch/office/I.1.4",
+        "name": {
+          "de": "Direktion für Völkerrecht",
+          "fr": "Direction du droit international public",
+          "it": "Direzione del diritto internazionale pubblico"
+        }
+      }
+    ]
+  },
+  {
+    "id": "https://ld.admin.ch/department/II",
+    "name": {
+      "de": "Eidgenössisches Departement des Innern",
+      "fr": "Département fédéral de l'intérieur",
+      "it": "Dipartimento federale dell'interno"
+    },
+    "abbreviation": {
+      "de": "EDI",
+      "fr": "DFI",
+      "it": "DFI"
+    },
+    "organizations": [
+      {
+        "id": "https://ld.admin.ch/office/II.1.8",
+        "name": {
+          "de": "Bundesamt für Sozialversicherungen",
+          "fr": "Office fédéral des assurances sociales",
+          "it": "Ufficio federale delle assicurazioni sociali"
+        }
+      },
+      {
+        "id": "https://ld.admin.ch/office/II.1.9",
+        "name": {
+          "de": "Bundesamt für Lebensmittelsicherheit und Veterinärwesen",
+          "fr": "Office fédéral de la sécurité alimentaire et des affaires vétérinaires",
+          "it": "Ufficio federale della sicurezza alimentare e di veterinaria"
+        }
+      },
+      {
+        "id": "https://ld.admin.ch/office/II.1.7",
+        "name": {
+          "de": "Bundesamt für Statistik",
+          "fr": "Office fédéral de la statistique",
+          "it": "Ufficio federale di statistica"
+        }
+      },
+      {
+        "id": "https://ld.admin.ch/office/II.1.6",
+        "name": {
+          "de": "Bundesamt für Gesundheit",
+          "fr": "Office fédéral de la santé publique",
+          "it": "Ufficio federale della sanità pubblica"
+        }
+      },
+      {
+        "id": "https://ld.admin.ch/office/II.2.2.3",
+        "name": {
+          "de": "Schweizerisches Heilmittelinstitut",
+          "fr": "Institut suisse des produits thérapeutiques",
+          "it": "Istituto svizzero per gli agenti terapeutici"
+        }
+      },
+      {
+        "id": "https://ld.admin.ch/office/II.2.2.4",
+        "name": {
+          "de": "Ausgleichsfonds AHV/IV/EO",
+          "fr": "Fonds de compensation AVS/AI/APG",
+          "it": "Fondi di compensazione AVS/AI/IPG"
+        }
+      },
+      {
+        "id": "https://ld.admin.ch/office/II.2.2.1",
+        "name": {
+          "de": "Schweizerisches Nationalmuseum",
+          "fr": "Musée national suisse",
+          "it": "Museo nazionale svizzero"
+        }
+      },
+      {
+        "id": "https://ld.admin.ch/office/II.2.2.2",
+        "name": {
+          "de": "Pro Helvetia",
+          "fr": "Pro Helvetia",
+          "it": "Pro Helvetia"
+        }
+      },
+      {
+        "id": "https://ld.admin.ch/office/II.1.2",
+        "name": {
+          "de": "Eidgenössisches Büro für die Gleichstellung von Frau und Mann",
+          "fr": "Bureau fédéral de l'égalité entre femmes et hommes",
+          "it": "Ufficio federale per l'uguaglianza fra donna e uomo"
+        }
+      },
+      {
+        "id": "https://ld.admin.ch/office/II.1.3",
+        "name": {
+          "de": "Bundesamt für Kultur",
+          "fr": "Office fédéral de la culture",
+          "it": "Ufficio federale della cultura"
+        }
+      },
+      {
+        "id": "https://ld.admin.ch/office/II.1.1",
+        "name": {
+          "de": "Generalsekretariat",
+          "fr": "Secrétariat général",
+          "it": "Segreteria generale"
+        }
+      },
+      {
+        "id": "https://ld.admin.ch/office/II.1.5",
+        "name": {
+          "de": "Bundesamt für Meteorologie und Klimatologie",
+          "fr": "Office fédéral de météorologie et de climatologie",
+          "it": "Ufficio federale di meteorologia e climatologia"
+        }
+      },
+      {
+        "id": "https://ld.admin.ch/office/II.1.4",
+        "name": {
+          "de": "Schweizerisches Bundesarchiv",
+          "fr": "Archives fédérales suisses",
+          "it": "Archivio federale svizzero"
+        }
+      }
+    ]
+  },
+  {
+    "id": "https://ld.admin.ch/department/III",
+    "name": {
+      "de": "Eidgenössisches Justiz- und Polizeidepartement",
+      "fr": "Département fédéral de justice et police",
+      "it": "Dipartimento federale di giustizia e polizia"
+    },
+    "abbreviation": {
+      "de": "EJPD",
+      "fr": "DFJP",
+      "it": "DFGP"
+    },
+    "organizations": [
+      {
+        "id": "https://ld.admin.ch/office/III.1.1",
+        "name": {
+          "de": "Generalsekretariat",
+          "fr": "Secrétariat général",
+          "it": "Segreteria generale"
+        }
+      },
+      {
+        "id": "https://ld.admin.ch/office/III.1.2",
+        "name": {
+          "de": "Bundesamt für Justiz",
+          "fr": "Office fédéral de la justice",
+          "it": "Ufficio federale di giustizia"
+        }
+      },
+      {
+        "id": "https://ld.admin.ch/office/III.1.3",
+        "name": {
+          "de": "Bundesamt für Polizei",
+          "fr": "Office fédéral de la police",
+          "it": "Ufficio federale di polizia"
+        }
+      },
+      {
+        "id": "https://ld.admin.ch/office/III.2.2.1",
+        "name": {
+          "de": "Schweizerisches Institut für Rechtsvergleichung",
+          "fr": "Institut suisse de droit comparé",
+          "it": "Istituto svizzero di diritto comparato"
+        }
+      },
+      {
+        "id": "https://ld.admin.ch/office/III.2.2.2",
+        "name": {
+          "de": "Eidgenössisches Institut für Geistiges Eigentum",
+          "fr": "Institut Fédéral de la Propriété Intellectuelle",
+          "it": "Istituto Federale della Proprietà Intellettuale"
+        }
+      },
+      {
+        "id": "https://ld.admin.ch/office/III.1.4",
+        "name": {
+          "de": "Staatssekretariat für Migration",
+          "fr": "Secrétariat d'État aux migrations",
+          "it": "Segreteria di Stato della migrazione"
+        }
+      },
+      {
+        "id": "https://ld.admin.ch/office/III.2.1.2",
+        "name": {
+          "de": "Dienst Überwachung Post- und Fernmeldeverkehr",
+          "fr": "Service Surveillance de la correspondance par poste et télécommunication",
+          "it": "Servizio Sorveglianza della corrispondenza postale e del traffico delle telecomunicazioni"
+        }
+      },
+      {
+        "id": "https://ld.admin.ch/office/III.2.1.3",
+        "name": {
+          "de": "Kommission zur Verhütung von Folter",
+          "fr": "Commission de prévention de la torture",
+          "it": "Commissione per la prevenzione della tortura"
+        }
+      },
+      {
+        "id": "https://ld.admin.ch/office/III.2.2.3",
+        "name": {
+          "de": "Eidgenössische Revisionsaufsichtsbehörde",
+          "fr": "Autorité fédérale de surveillance en matière de révision",
+          "it": "Autorità federale di sorveglianza dei revisori"
+        }
+      },
+      {
+        "id": "https://ld.admin.ch/office/III.2.2.4",
+        "name": {
+          "de": "Ausgleichsfonds AHV/IV/EO",
+          "fr": "Fonds de compensation AVS/AI/APG",
+          "it": "Fondi di compensazione AVS/AI/IPG"
+        }
+      }
+    ]
+  },
+  {
+    "id": "https://ld.admin.ch/department/IV",
+    "name": {
+      "de": "Eidgenössisches Departement für Verteidigung, Bevölkerungsschutz und Sport",
+      "fr": "Département fédéral de la défense, de la protection de la population et des sports",
+      "it": "Dipartimento federale della difesa, della protezione della popolazione e dello sport"
+    },
+    "abbreviation": {
+      "de": "VBS",
+      "fr": "DDPS",
+      "it": "DDPS"
+    },
+    "organizations": [
+      {
+        "id": "https://ld.admin.ch/office/IV.1.1",
+        "name": {
+          "de": "Generalsekretariat VBS",
+          "fr": "Secrétariat général DDPS",
+          "it": "Segreteria generale DDPS"
+        }
+      },
+      {
+        "id": "https://ld.admin.ch/office/IV.1.1a",
+        "name": {
+          "de": "Recht",
+          "fr": "Droit",
+          "it": "Diritto"
+        }
+      },
+      {
+        "id": "https://ld.admin.ch/office/IV.1.2",
+        "name": {
+          "de": "Bundesamt für Rüstung",
+          "fr": "Office fédéral de l'armement",
+          "it": "Ufficio federale dell'armamento"
+        }
+      },
+      {
+        "id": "https://ld.admin.ch/office/IV.1.3",
+        "name": {
+          "de": "Oberauditorat",
+          "fr": "Office de l'auditeur en chef",
+          "it": "Ufficio dell'uditore in capo"
+        }
+      },
+      {
+        "id": "https://ld.admin.ch/office/IV.1.4",
+        "name": {
+          "de": "Gruppe Verteidigung",
+          "fr": "Groupement Défense",
+          "it": "Aggruppamento Difesa"
+        }
+      },
+      {
+        "id": "https://ld.admin.ch/office/IV.1.5",
+        "name": {
+          "de": "Bundesamt für Umwelt",
+          "fr": "Office fédéral de l'environnement",
+          "it": "Ufficio federale dell'ambiente"
+        }
+      },
+      {
+        "id": "https://ld.admin.ch/office/IV.1.5a",
+        "name": {
+          "de": "Bundesamt für Landestopografie",
+          "fr": "Office fédéral de topographie",
+          "it": "Ufficio federale di topografia"
+        }
+      },
+      {
+        "id": "https://ld.admin.ch/office/IV.1.6",
+        "name": {
+          "de": "Bundesamt für Bevölkerungsschutz",
+          "fr": "Office fédéral de la protection de la population",
+          "it": "Ufficio federale della protezione della popolazione"
+        }
+      },
+      {
+        "id": "https://ld.admin.ch/office/IV.1.7",
+        "name": {
+          "de": "Bundesamt für Zivilluftfahrt",
+          "fr": "Office fédéral de l'aviation civile",
+          "it": "Ufficio federale dell'aviazione civile"
+        }
+      },
+      {
+        "id": "https://ld.admin.ch/office/IV.1.8",
+        "name": {
+          "de": "Bundesamt für Verkehr",
+          "fr": "Office fédéral des transports",
+          "it": "Ufficio federale dei trasporti"
+        }
+      },
+      {
+        "id": "https://ld.admin.ch/office/IV.2.1.1",
+        "name": {
+          "de": "Generalsekretariat",
+          "fr": "Secrétariat général",
+          "it": "Segreteria generale"
+        }
+      }
+    ]
+  },
+  {
+    "id": "https://ld.admin.ch/department/V",
+    "name": {
+      "de": "Eidgenössisches Finanzdepartement",
+      "fr": "Département fédéral des finances",
+      "it": "Dipartimento federale delle finanze"
+    },
+    "abbreviation": {
+      "de": "EFD",
+      "fr": "DFF",
+      "it": "DFF"
+    },
+    "organizations": [
+      {
+        "id": "https://ld.admin.ch/office/V.1.1",
+        "name": {
+          "de": "Generalsekretariat EFD",
+          "fr": "Secrétariat général DFF",
+          "it": "Segreteria generale DFF"
+        }
+      },
+      {
+        "id": "https://ld.admin.ch/office/V.1.2",
+        "name": {
+          "de": "Eidgenössische Finanzverwaltung",
+          "fr": "Administration fédérale des finances",
+          "it": "Amministrazione federale delle finanze"
+        }
+      },
+      {
+        "id": "https://ld.admin.ch/office/V.1.3",
+        "name": {
+          "de": "Eidgenössische Steuerverwaltung",
+          "fr": "Administration fédérale des contributions",
+          "it": "Amministrazione federale delle contribuzioni"
+        }
+      },
+      {
+        "id": "https://ld.admin.ch/office/V.1.4",
+        "name": {
+          "de": "Eidgenössische Zollverwaltung",
+          "fr": "Administration fédérale des douanes",
+          "it": "Amministrazione federale delle dogane"
+        }
+      },
+      {
+        "id": "https://ld.admin.ch/office/V.1.5",
+        "name": {
+          "de": "Eidgenössische Finanzmarktaufsicht",
+          "fr": "Autorité fédérale de surveillance des marchés financiers",
+          "it": "Autorità federale di vigilanza sui mercati finanziari"
+        }
+      },
+      {
+        "id": "https://ld.admin.ch/office/V.1.6",
+        "name": {
+          "de": "Eidgenössische Alkoholverwaltung",
+          "fr": "Administration fédérale des alcools",
+          "it": "Amministrazione federale degli alcool"
+        }
+      },
+      {
+        "id": "https://ld.admin.ch/office/V.1.7",
+        "name": {
+          "de": "Bundesamt für Informatik und Telekommunikation",
+          "fr": "Office fédéral de l'informatique et de la télécommunication",
+          "it": "Ufficio federale dell'informatica e della telecomunicazione"
+        }
+      },
+      {
+        "id": "https://ld.admin.ch/office/V.1.8",
+        "name": {
+          "de": "Bundesamt für Bauten und Logistik",
+          "fr": "Office fédéral des constructions et de la logistique",
+          "it": "Ufficio federale delle costruzioni e della logistica"
+        }
+      },
+      {
+        "id": "https://ld.admin.ch/office/V.1.9",
+        "name": {
+          "de": "Informatiksteuerungsorgan des Bundes",
+          "fr": "Unité de pilotage informatique de la Confédération",
+          "it": "Organo direzione informatica della Confederazione"
+        }
+      },
+      {
+        "id": "https://ld.admin.ch/office/V.2.1.1",
+        "name": {
+          "de": "Eidgenössische Finanzkontrolle",
+          "fr": "Contrôle fédéral des finances",
+          "it": "Controllo federale delle finanze"
+        }
+      },
+      {
+        "id": "https://ld.admin.ch/office/V.2.2.1",
+        "name": {
+          "de": "Eidgenössische Finanzmarktaufsicht",
+          "fr": "Autorité fédérale de surveillance des marchés financiers",
+          "it": "Autorità federale di vigilanza sui mercati finanziari"
+        }
+      },
+      {
+        "id": "https://ld.admin.ch/office/V.2.2.2",
+        "name": {
+          "de": "Pensionskasse des Bundes",
+          "fr": "Caisse fédérale de pensions",
+          "it": "Cassa pensioni della Confederazione"
+        }
+      }
+    ]
+  },
+  {
+    "id": "https://ld.admin.ch/department/VI",
+    "name": {
+      "de": "Eidgenössisches Departement für Wirtschaft, Bildung und Forschung",
+      "fr": "Département fédéral de l'économie, de la formation et de la recherche",
+      "it": "Dipartimento federale dell'economia, della formazione e della ricerca"
+    },
+    "abbreviation": {
+      "de": "WBF",
+      "fr": "DEFR",
+      "it": "DEFR"
+    },
+    "organizations": [
+      {
+        "id": "https://ld.admin.ch/office/VI.1.1",
+        "name": {
+          "de": "Staatssekretariat für Wirtschaft",
+          "fr": "Secrétariat d'État à l'économie",
+          "it": "Segreteria di Stato dell'economia"
+        }
+      },
+      {
+        "id": "https://ld.admin.ch/office/VI.1.2",
+        "name": {
+          "de": "Staatssekretariat für Bildung, Forschung und Innovation",
+          "fr": "Secrétariat d'État à la formation, à la recherche et à l'innovation",
+          "it": "Segreteria di Stato per la formazione, la ricerca e l'innovazione"
+        }
+      },
+      {
+        "id": "https://ld.admin.ch/office/VI.1.5",
+        "name": {
+          "de": "Bundesamt für Landwirtschaft",
+          "fr": "Office fédéral de l'agriculture",
+          "it": "Ufficio federale dell'agricoltura"
+        }
+      },
+      {
+        "id": "https://ld.admin.ch/office/VI.1.7",
+        "name": {
+          "de": "Bundesamt für wirtschaftliche Landesversorgung",
+          "fr": "Office fédéral pour l'approvisionnement économique du pays",
+          "it": "Ufficio federale per l'approvvigionamento economico del Paese"
+        }
+      },
+      {
+        "id": "https://ld.admin.ch/office/VI.1.3",
+        "name": {
+          "de": "Bundesamt für Messwesen",
+          "fr": "Office fédéral de métrologie",
+          "it": "Ufficio federale di metrologia"
+        }
+      },
+      {
+        "id": "https://ld.admin.ch/office/VI.1.8",
+        "name": {
+          "de": "Bundesamt für Wohnungswesen",
+          "fr": "Office fédéral du logement",
+          "it": "Ufficio federale delle abitazioni"
+        }
+      },
+      {
+        "id": "https://ld.admin.ch/office/VI.1.4",
+        "name": {
+          "de": "Generalsekretariat",
+          "fr": "Secrétariat général",
+          "it": "Segreteria generale"
+        }
+      },
+      {
+        "id": "https://ld.admin.ch/office/VI.1.9",
+        "name": {
+          "de": "Bundesamt für Berufsbildung und Technologie",
+          "fr": "Office fédéral de la formation professionnelle et de la technologie",
+          "it": "Ufficio federale della formazione professionale e della tecnologia"
+        }
+      },
+      {
+        "id": "https://ld.admin.ch/office/VI.2.1.1",
+        "name": {
+          "de": "Bereich der Eidgenössischen Technischen Hochschulen",
+          "fr": "Domaine des écoles polytechniques fédérales",
+          "it": "Settore dei politecnici federali"
+        }
+      },
+      {
+        "id": "https://ld.admin.ch/office/VI.2.2.1",
+        "name": {
+          "de": "Schweiz Tourismus",
+          "fr": "Suisse Tourisme",
+          "it": "Svizzera Turismo"
+        }
+      },
+      {
+        "id": "https://ld.admin.ch/office/VI.2.2.2",
+        "name": {
+          "de": "Schweizerische Gesellschaft für Hotelkredit",
+          "fr": "Société suisse de crédit hôtelier",
+          "it": "Società svizzera di credito alberghiero"
+        }
+      },
+      {
+        "id": "https://ld.admin.ch/office/VI.2.2.3",
+        "name": {
+          "de": "Schweizerische Exportrisikoversicherung",
+          "fr": "Assurance suisse contre les risques à l'exportation",
+          "it": "Assicurazione svizzera contro i rischi delle esportazioni"
+        }
+      },
+      {
+        "id": "https://ld.admin.ch/office/VI.2.2.4",
+        "name": {
+          "de": "Schweizerische Nationalbank",
+          "fr": "Banque nationale suisse",
+          "it": "Banca nazionale svizzera"
+        }
+      },
+      {
+        "id": "https://ld.admin.ch/office/VI.2.2.5",
+        "name": {
+          "de": "Eidgenössische Bankenkommission",
+          "fr": "Commission fédérale des banques",
+          "it": "Commissione federale delle banche"
+        }
+      },
+      {
+        "id": "https://ld.admin.ch/office/VI.2.2.6",
+        "name": {
+          "de": "Eidgenössische Spielbankenkommission",
+          "fr": "Commission fédérale des maisons de jeu",
+          "it": "Commissione federale delle case da gioco"
+        }
+      },
+      {
+        "id": "https://ld.admin.ch/office/VI.2.2.7",
+        "name": {
+          "de": "Eidgenössische Elektrizitätskommission",
+          "fr": "Commission fédérale de l'électricité",
+          "it": "Commissione federale dell'elettricità"
+        }
+      },
+      {
+        "id": "https://ld.admin.ch/office/VI.2.2.8",
+        "name": {
+          "de": "Eidgenössische Wettbewerbskommission",
+          "fr": "Commission de la concurrence",
+          "it": "Commissione della concorrenza"
+        }
+      },
+      {
+        "id": "https://ld.admin.ch/office/VI.2.2.9",
+        "name": {
+          "de": "Eidgenössische Materialprüfungs- und Forschungsanstalt",
+          "fr": "Laboratoire fédéral d'essai des matériaux et de recherche",
+          "it": "Laboratorio federale di prova dei materiali e di ricerca"
+        }
+      },
+      {
+        "id": "https://ld.admin.ch/office/VI.2.2.10",
+        "name": {
+          "de": "Eidgenössische Anstalt für Wasserversorgung, Abwasserreinigung und Gewässerschutz",
+          "fr": "Institut fédéral pour l'aménagement, l'épuration et la protection des eaux",
+          "it": "Istituto federale per l'approvvigionamento, la depurazione e la protezione delle acque"
+        }
+      },
+      {
+        "id": "https://ld.admin.ch/office/VI.2.2.11",
+        "name": {
+          "de": "Schweizerische Agentur für Innovationsförderung",
+          "fr": "Agence suisse pour l'encouragement de l'innovation",
+          "it": "Agenzia svizzera per la promozione dell'innovazione"
+        }
+      },
+      {
+        "id": "https://ld.admin.ch/office/VI.2.3.1",
+        "name": {
+          "de": "Schweizerischer Nationalfonds zur Förderung der wissenschaftlichen Forschung",
+          "fr": "Fonds national suisse de la recherche scientifique",
+          "it": "Fondo nazionale svizzero per la ricerca scientifica"
+        }
+      }
+    ]
+  },
+  {
+    "id": "https://ld.admin.ch/department/VII",
+    "name": {
+      "de": "Eidgenössisches Departement für Umwelt, Verkehr, Energie und Kommunikation",
+      "fr": "Département fédéral de l'environnement, des transports, de l'énergie et de la communication",
+      "it": "Dipartimento federale dell'ambiente, dei trasporti, dell'energia e delle comunicazioni"
+    },
+    "abbreviation": {
+      "de": "UVEK",
+      "fr": "DETEC",
+      "it": "DATEC"
+    },
+    "organizations": [
+      {
+        "id": "https://ld.admin.ch/office/VII.1.1",
+        "name": {
+          "de": "Generalsekretariat UVEK",
+          "fr": "Secrétariat général DETEC",
+          "it": "Segreteria generale DATEC"
+        }
+      },
+      {
+        "id": "https://ld.admin.ch/office/VII.1.2",
+        "name": {
+          "de": "Bundesamt für Umwelt",
+          "fr": "Office fédéral de l'environnement",
+          "it": "Ufficio federale dell'ambiente"
+        }
+      },
+      {
+        "id": "https://ld.admin.ch/office/VII.1.3",
+        "name": {
+          "de": "Bundesamt für Verkehr",
+          "fr": "Office fédéral des transports",
+          "it": "Ufficio federale dei trasporti"
+        }
+      },
+      {
+        "id": "https://ld.admin.ch/office/VII.1.4",
+        "name": {
+          "de": "Bundesamt für Kommunikation",
+          "fr": "Office fédéral de la communication",
+          "it": "Ufficio federale delle comunicazioni"
+        }
+      },
+      {
+        "id": "https://ld.admin.ch/office/VII.1.5",
+        "name": {
+          "de": "Bundesamt für Energie",
+          "fr": "Office fédéral de l'énergie",
+          "it": "Ufficio federale dell'energia"
+        }
+      },
+      {
+        "id": "https://ld.admin.ch/office/VII.1.6",
+        "name": {
+          "de": "Bundesamt für Raumentwicklung",
+          "fr": "Office fédéral du développement territorial",
+          "it": "Ufficio federale dello sviluppo territoriale"
+        }
+      },
+      {
+        "id": "https://ld.admin.ch/office/VII.1.7",
+        "name": {
+          "de": "Bundesamt für Meteorologie und Klimatologie",
+          "fr": "Office fédéral de météorologie et de climatologie",
+          "it": "Ufficio federale di meteorologia e climatologia"
+        }
+      },
+      {
+        "id": "https://ld.admin.ch/office/VII.1.8",
+        "name": {
+          "de": "Bundesamt für Strassen",
+          "fr": "Office fédéral des routes",
+          "it": "Ufficio federale delle strade"
+        }
+      },
+      {
+        "id": "https://ld.admin.ch/office/VII.2.2.1",
+        "name": {
+          "de": "Eidgenössische Natur- und Heimatschutzkommission",
+          "fr": "Commission fédérale pour la protection de la nature et du paysage",
+          "it": "Commissione federale per la protezione della natura e del paesaggio"
+        }
+      },
+      {
+        "id": "https://ld.admin.ch/office/VII.2.2.2",
+        "name": {
+          "de": "Eidgenössische Kommission für Lufthygiene",
+          "fr": "Commission fédérale de l'hygiène de l'air",
+          "it": "Commissione federale per l'igiene dell'aria"
+        }
+      },
+      {
+        "id": "https://ld.admin.ch/office/VII.2.2.3",
+        "name": {
+          "de": "Eidgenössische Kommission für biologische Sicherheit",
+          "fr": "Commission fédérale pour la sécurité biologique",
+          "it": "Commissione federale per la sicurezza biologica"
+        }
+      }
+    ]
+  }
+]
