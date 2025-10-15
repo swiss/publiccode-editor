@@ -13,8 +13,8 @@ import PublicCode from "../contents/publiccode";
 type Props<T> = {
   fieldName: T;
   required?: boolean;
-  data: Array<{ value: string; text: string }>;
-  filter?: Filter<{ value: string; text: string }>;
+  data: Array<{ value: string; text: string; group?: string }>;
+  filter?: Filter<{ value: string; text: string; group?: string }>;
 };
 
 export default function EditorSelect<
@@ -52,6 +52,7 @@ export default function EditorSelect<
         dataKey="value"
         textField="text"
         filter={filter}
+        groupBy={"group"}
       />
       <small className="form-text">{description}</small>
       {errorMessage && (
