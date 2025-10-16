@@ -13,7 +13,7 @@ import { useTranslation } from "react-i18next";
 import { RequiredDeep } from "type-fest";
 import licenses from "../../generated/licenses.json";
 import organisationData from "../data/organisations.json";
-import { allLangs, displayName } from "../../i18n";
+import { allLangs, displayName, getLocalizedText } from "../../i18n";
 import categories from "../contents/categories";
 import { DEFAULT_COUNTRY_SECTIONS } from "../contents/constants";
 import * as countrySection from "../contents/countrySpecificSection";
@@ -168,9 +168,9 @@ export default function Editor() {
 
   const organisations = organisationData.flatMap(data =>
     data.organisations.map(organisation => ({
-      text: organisation.name[i18n.language as keyof typeof organisation.name] || organisation.name.de,
+      text: getLocalizedText(organisation.name, i18n.language),
       value: organisation.id,
-      group: data.name[i18n.language as keyof typeof data.name] || data.name.de,
+      group: getLocalizedText(data.name, i18n.language) + " (" + getLocalizedText(data.abbreviation, i18n.language) + ")",
     }))
   );
 
