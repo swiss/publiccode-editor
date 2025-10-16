@@ -775,5 +775,28 @@
         }
       }
     ]
+  },
+  {
+    "id": "https://ld.admin.ch/FCh",
+    "name": {
+      "de": "Bundeskanzlei",
+      "fr": "Chancellerie fédérale",
+      "it": "Cancelleria federale"
+    },
+    "abbreviation": {
+      "de": "BK",
+      "fr": "ChF",
+      "it": "CaF"
+    },
+    "organizations": [
+      {
+        "id": "https://ld.admin.ch/FCh",
+        "name": {
+          "de": "Bundeskanzlei",
+          "fr": "Chancellerie fédérale",
+          "it": "Cancelleria federale"
+        }
+      }
+    ]
   }
 ]
