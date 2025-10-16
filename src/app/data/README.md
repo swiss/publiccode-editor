@@ -1,8 +1,8 @@
 # Data
 
-## Organizations
+## Organisations
 
-The data in the file `organization.json` originates from the following sources:
+The data in the file `organisations.json` originates from the following sources:
 
 - The seven departements and the Federal Chancellery
 ```

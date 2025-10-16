@@ -12,7 +12,7 @@ import useFormPersist from "react-hook-form-persist";
 import { useTranslation } from "react-i18next";
 import { RequiredDeep } from "type-fest";
 import licenses from "../../generated/licenses.json";
-import organizationData from "../data/organizations.json";
+import organisationData from "../data/organisations.json";
 import { allLangs, displayName } from "../../i18n";
 import categories from "../contents/categories";
 import { DEFAULT_COUNTRY_SECTIONS } from "../contents/constants";
@@ -131,6 +131,7 @@ const resolver: Resolver<PublicCode | PublicCodeWithDeprecatedFields> = async (
 const defaultValues = {
   publiccodeYmlVersion: LATEST_VERSION,
   legal: {},
+  organisation: {},
   localisation: { availableLanguages: [] },
   maintenance: { contacts: undefined, contractors: undefined },
   platforms: [],
@@ -165,10 +166,10 @@ export default function Editor() {
   const { languages, setLanguages, resetLanguages } = useLanguagesStore();
   const { setCountrySections } = useCountryStore();
 
-  const organizations = organizationData.flatMap(data =>
-    data.organizations.map(organization => ({
-      text: organization.name[i18n.language as keyof typeof organization.name] || organization.name.de,
-      value: organization.id,
+  const organisations = organisationData.flatMap(data =>
+    data.organisations.map(organisation => ({
+      text: organisation.name[i18n.language as keyof typeof organisation.name] || organisation.name.de,
+      value: organisation.id,
       group: data.name[i18n.language as keyof typeof data.name] || data.name.de,
     }))
   );
@@ -544,9 +545,9 @@ export default function Editor() {
                 <EditorInput<"landingURL"> fieldName="landingURL" />
               </span>
               <div className="mt-5">
-                <EditorSelect<"organisationURI">
-                  fieldName="organisationURI"
-                  data={organizations}
+                <EditorSelect<"organisation.uri">
+                  fieldName="organisation.uri"
+                  data={organisations}
                 />
               </div>
               <span>

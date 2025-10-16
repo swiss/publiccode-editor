@@ -13,7 +13,7 @@ export default interface PublicCode {
   applicationSuite?: string;
   url: string;
   landingURL?: string;
-  organisationURI?: string;
+  organisation?: Organisation;
   isBasedOn?: string;
   softwareVersion?: string;
   releaseDate?: string; // “YYYY-MM-DD”
@@ -71,6 +71,11 @@ interface Legal {
   mainCopyrightOwner?: string;
   repoOwner?: string;
   authorsFile?: string;
+}
+
+interface Organisation {
+  uri: string;
+  name?: string;
 }
 
 interface Maintenance {
@@ -187,6 +192,7 @@ export const publicCodeDummyObjectFactory = () => ({
   applicationSuite: '',
   url: '',
   landingURL: '',
+  organisation: { uri: '' },
   isBasedOn: '',
   softwareVersion: '',
   releaseDate: '',

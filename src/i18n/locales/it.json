@@ -340,9 +340,11 @@
       "label": "URL Landing Page",
       "description": "L’URL che punta a una pagina di presentazione leggibile da un utente."
     },
-    "organisationURI": {
-      "label": "URI dell'organizzazione",
-      "description": "L'URI dell'organizzazione che mantiene il software."
+    "organisation": {
+      "uri": {
+        "label": "URI dell'organizzazione",
+        "description": "L'URI dell'organizzazione che mantiene il software."
+      }
     },
     "isBasedOn": {
       "label": "Variante o fork di",

@@ -11,7 +11,7 @@
       "fr": "DFAE",
       "it": "DFAE"
     },
-    "organizations": [
+    "organisations": [
       {
         "id": "https://ld.admin.ch/office/I.1.5",
         "name": {
@@ -74,7 +74,7 @@
       "fr": "DFI",
       "it": "DFI"
     },
-    "organizations": [
+    "organisations": [
       {
         "id": "https://ld.admin.ch/office/II.1.8",
         "name": {
@@ -193,7 +193,7 @@
       "fr": "DFJP",
       "it": "DFGP"
     },
-    "organizations": [
+    "organisations": [
       {
         "id": "https://ld.admin.ch/office/III.1.1",
         "name": {
@@ -288,7 +288,7 @@
       "fr": "DDPS",
       "it": "DDPS"
     },
-    "organizations": [
+    "organisations": [
       {
         "id": "https://ld.admin.ch/office/IV.1.1",
         "name": {
@@ -391,7 +391,7 @@
       "fr": "DFF",
       "it": "DFF"
     },
-    "organizations": [
+    "organisations": [
       {
         "id": "https://ld.admin.ch/office/V.1.1",
         "name": {
@@ -502,7 +502,7 @@
       "fr": "DEFR",
       "it": "DEFR"
     },
-    "organizations": [
+    "organisations": [
       {
         "id": "https://ld.admin.ch/office/VI.1.1",
         "name": {
@@ -685,7 +685,7 @@
       "fr": "DETEC",
       "it": "DATEC"
     },
-    "organizations": [
+    "organisations": [
       {
         "id": "https://ld.admin.ch/office/VII.1.1",
         "name": {
@@ -788,7 +788,7 @@
       "fr": "ChF",
       "it": "CaF"
     },
-    "organizations": [
+    "organisations": [
       {
         "id": "https://ld.admin.ch/FCh",
         "name": {

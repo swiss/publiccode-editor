@@ -81,13 +81,14 @@ const fields = (): Array<Field> => {
     },
     {
         type: "array",
-        title: "organizations",
+        title: "uri",
         section: 0,
         items: {
             type: "string",
             enum: [],
         },
         widget: "combobox",
+        group: "organization",
     },
     {
       title: "localisedName",

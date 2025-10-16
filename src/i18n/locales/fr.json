@@ -336,9 +336,11 @@
       "label": "URL de la page d'accueil",
       "description": "Si le paramètre url ne conduit pas à une page lisible ou navigable, mais conduit uniquement au code source pour un agent de contrôle de la source, cette clé vous permet de spécifier une page de destination. Idéalement, c'est sur cette page que vos utilisateurs atterriront lorsqu'ils cliqueront sur un bouton intitulé “Aller au code source de l'application”. Dans le cas où le produit fournit un installateur graphique automatisé, cette URL peut pointer vers une page qui contient une référence au code source mais offre également le téléchargement d'un tel installateur."
     },
-    "organisationURI": {
-      "label": "URI de l'organisation",
-      "description": "L'URI de l'organisation qui maintient le logiciel."
+    "organisation": {
+      "uri": {
+        "label": "URI de l'organisation",
+        "description": "L'URI de l'organisation qui maintient le logiciel."
+      }
     },
     "isBasedOn": {
       "label": "Est Basé Sur",

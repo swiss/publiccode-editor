@@ -323,9 +323,11 @@
       "label": "Landingpage-URL",
       "description": "Wenn der URL-Parameter keine für Menschen lesbare oder durchsuchbare Seite bereitstellt, sondern nur Quellcode für einen Quellcodeverwaltungsclient, haben Sie mit diesem Schlüssel die Möglichkeit, eine Landingpage anzugeben. Diese Seite ist idealerweise der Ort, an dem Ihre Benutzer landen, wenn sie auf eine Schaltfläche klicken, die mit „Zum Anwendungsquellcode gehen“ oder ähnlich beschriftet ist. Falls das Produkt ein automatisiertes grafisches Installationsprogramm bereitstellt, kann diese URL auf eine Seite verweisen, die einen Verweis auf den Quellcode enthält, aber auch den Download eines solchen Installationsprogramms anbietet."
     },
-    "organisationURI": {
-      "label": "Organisations-URI",
-      "description": "Die URI der Organisation, die die Software betreut."
+    "organisation": {
+      "uri": {
+        "label": "Organisations-URI",
+        "description": "Die URI der Organisation, die die Software betreut."
+      }
     },
     "isBasedOn": {
       "label": "Basiert auf",

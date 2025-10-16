@@ -63,6 +63,7 @@ export default function linter({
   softwareType,
   intendedAudience,
   description,
+  organisation,
   legal: { license, mainCopyrightOwner, repoOwner, authorsFile },
   maintenance: { type, contractors, contacts },
   localisation: { localisationReady, availableLanguages },
@@ -88,6 +89,7 @@ export default function linter({
     intendedAudience: intendedAudience
       ? sortAs(defaultIntendedAudience, intendedAudience)
       : undefined,
+    organisation:  organisation === undefined ? undefined : { uri: organisation.uri, name: organisation.name },
     description: mapValues(description, sortDescription),
     legal: { license, mainCopyrightOwner, repoOwner, authorsFile },
     maintenance: {
