@@ -259,14 +259,32 @@ export default function Editor() {
     [setValue]
   );
 
+  const updateOrganisation = useCallback(
+    (value: Partial<PublicCode>) => {
+      const uri = value.organisation?.uri;
+
+      if (uri) {
+        const organisation = organisations.find(o => o.value === uri);
+        setValue("organisation.name", organisation?.text);
+      } else {
+        setValue("organisation.uri", undefined)
+        setValue("organisation.name", undefined);
+      }
+    },
+    [organisations, setValue]
+  )
+
   useEffect(() => {
     const subscription = watch((value, { name }) => {
       if (name === "maintenance.type") {
         resetMaintenance(value as PublicCode);
       }
+      if (name === "organisation.uri") {
+        updateOrganisation(value as PublicCode)
+      }
     });
     return () => subscription.unsubscribe();
-  }, [watch, resetMaintenance]);
+  }, [watch, resetMaintenance, updateOrganisation]);
   //#endregion
 
   //#region form action handlers
