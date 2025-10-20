@@ -341,8 +341,8 @@
     },
     "organisation": {
       "uri": {
-        "label": "Organisation URI",
-        "description": "The URI of the organisation that maintains the software."
+        "label": "Organisation",
+        "description": "The organisation that maintains the software."
       }
     },
     "isBasedOn": {
