@@ -267,8 +267,7 @@ export default function Editor() {
         const organisation = organisations.find(o => o.value === uri);
         setValue("organisation.name", organisation?.text);
       } else {
-        setValue("organisation.uri", undefined)
-        setValue("organisation.name", undefined);
+        setValue("organisation", undefined)
       }
     },
     [organisations, setValue]
