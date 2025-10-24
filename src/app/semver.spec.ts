@@ -14,7 +14,8 @@ describe('semver test', () => {
             toSemVerObject('0.3.0'),
             toSemVerObject('0.4.0'),
             toSemVerObject('0.4.1'),
-            toSemVerObject('0.5'),
+            toSemVerObject('0.5.0'),
+            toSemVerObject("0.6")
         ];
         //act
         const [
@@ -24,7 +25,8 @@ describe('semver test', () => {
             actual03,
             actual04,
             actual041,
-            actual05
+            actual05,
+            actual06
         ] = versionsUnderTests.map(v => isMinorThanLatest(v));
 
         //assert
@@ -32,9 +34,10 @@ describe('semver test', () => {
         expect(actual02).toBeTruthy();
         expect(actual021).toBeTruthy();
         expect(actual03).toBeTruthy();
-        expect(actual04).toBeFalsy();
-        expect(actual041).toBeFalsy();
-        expect(actual041).toBeFalsy();
+        expect(actual04).toBeTruthy();
+        expect(actual041).toBeTruthy();
+        expect(actual041).toBeTruthy();
         expect(actual05).toBeFalsy();
+        expect(actual06).toBeFalsy();
     })
 })
