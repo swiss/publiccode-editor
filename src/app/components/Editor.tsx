@@ -565,6 +565,7 @@ export default function Editor() {
                 <EditorSelect<"organisation.uri">
                   fieldName="organisation.uri"
                   data={organisations}
+                  filter="contains"
                 />
               </div>
               <span>
