@@ -48,9 +48,16 @@ export default function EditorSelect<
           onChange(value)
         }}
         value={value}
-        data={[...(!required ? [{ text: "(unset)", value: "" }] : []), ...data]}
+        data={[...(!required ? [{text: "", value: ""}] : []), ...data]}
         dataKey="value"
         textField="text"
+        renderListItem={(item) => {
+          if (item.value === "") {
+            return <span>(unset)</span>;
+          } else {
+            return <span>{item.text}</span>;
+          }
+        }}
         filter={filter}
         groupBy={"group"}
       />
