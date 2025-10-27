@@ -20,6 +20,7 @@
     "gdeploy": "gh-pages -u 'Deploy Bot <no-reply@puzzle.ch>' -d dist",
     "deploy": "gh-pages -u 'Deploy Bot <no-reply@teamdigitale.governo.it>' -d dist",
     "release": "release-it",
+    "postinstall": "npm run build:organisations",
     "_postinstall": "patch-package"
   },
   "keywords": [
