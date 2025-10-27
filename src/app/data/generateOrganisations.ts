@@ -100,13 +100,13 @@ function generateOrganisations(): void {
         de: data.info.nameDepDe.value,
         fr: data.info.nameDepFr.value,
         it: data.info.nameDepIt.value,
-        en: data.info.nameDepEn?.value,
+        en: data.info.nameDepEn?.value || '',
       },
       abbreviation: {
         de: data.info.altNameDepDe.value,
         fr: data.info.altNameDepFr.value,
         it: data.info.altNameDepIt.value,
-        en: data.info.altNameDepEn?.value,
+        en: data.info.altNameDepEn?.value || '',
       },
       organisations: data.offices.map(office => ({
         id: office.office!.value,
@@ -114,7 +114,7 @@ function generateOrganisations(): void {
           de: office.nameDe.value,
           fr: office.nameFr.value,
           it: office.nameIt.value,
-          en: office.nameEn?.value,
+          en: office.nameEn?.value || '',
         }
       }))
     };
@@ -145,7 +145,7 @@ function generateOrganisations(): void {
             de: binding.nameDepDe.value,
             fr: binding.nameDepFr.value,
             it: binding.nameDepIt.value,
-            en: binding.nameDepEn?.value,
+            en: binding.nameDepEn?.value || '',
           }
         }]
       };
