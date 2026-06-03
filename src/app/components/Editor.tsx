@@ -167,7 +167,7 @@ export default function Editor() {
     data.organisations.map(organisation => ({
       text: getLocalizedText(organisation.name, i18n.language) + (organisation.alternativeName ? ` (${getLocalizedText(organisation.alternativeName, i18n.language)})` : ""),
       value: organisation.id,
-      group: `${getLocalizedText(data.name, i18n.language)} (${getLocalizedText(data.abbreviation, i18n.language)})`,
+      group: getLocalizedText(data.name, i18n.language) + (data.abbreviation ? ` (${getLocalizedText(data.abbreviation, i18n.language)})` : ''),
     }))
   );
 
