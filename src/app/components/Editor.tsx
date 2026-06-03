@@ -168,7 +168,7 @@ export default function Editor() {
       text: getLocalizedText(organisation.name, i18n.language) + (organisation.alternativeName ? ` (${getLocalizedText(organisation.alternativeName, i18n.language)})` : ""),
       value: organisation.id,
       group: getLocalizedText(data.name, i18n.language) + (data.abbreviation ? ` (${getLocalizedText(data.abbreviation, i18n.language)})` : ''),
-    }))
+    })).sort((a, b) => a.text.localeCompare(b.text, i18n.language))
   );
 
   const { showCountryExtensionVersion, setShowCountryExtensionVersion } =
