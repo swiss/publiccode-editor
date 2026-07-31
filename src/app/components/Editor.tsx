@@ -741,14 +741,14 @@ export default function Editor() {
                 <legend className="h6 w-auto p-0 pb-4">
                   {t("editor.sections.organisation")}
                 </legend>
+                <br />
                 <span>
-                  <EditorInput<"organisation.uri">
+                  <EditorSelect<"organisation.uri">
                     fieldName="organisation.uri"
                     required
+                    data={organisations}
+                    filter="contains"
                   />
-                </span>
-                <span>
-                  <EditorInput<"organisation.name"> fieldName="organisation.name" />
                 </span>
               </fieldset>
               <fieldset className="p-0 mt-4 border border-start-0 border-end-0">
