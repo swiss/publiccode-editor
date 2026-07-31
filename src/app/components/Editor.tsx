@@ -555,13 +555,20 @@ export default function Editor() {
                 <EditorInput<"applicationSuite"> fieldName="applicationSuite" />
               </span>
             </div>
-            <div className="mt-5">
-              <EditorSelect<"organisation.uri">
-                fieldName="organisation.uri"
-                data={organisations}
-                filter="contains"
-              />
-            </div>
+            <fieldset className="p-0 mt-4 border border-start-0 border-end-0">
+              <legend className="h6 w-auto p-0 pb-4">
+                {t("editor.sections.organisation")}
+              </legend>
+              <br />
+              <span>
+                <EditorSelect<"organisation.uri">
+                  fieldName="organisation.uri"
+                  required
+                  data={organisations}
+                  filter="contains"
+                />
+              </span>
+            </fieldset>
             <fieldset className="p-0 mt-4 border border-start-0 border-end-0 ">
               <legend className="h6 w-auto p-0 pb-4">
                 {t("editor.sections.description-and-features")}
@@ -737,20 +744,6 @@ export default function Editor() {
                   required
                 />
               </span>
-              <fieldset className="p-0 mt-4 border border-start-0 border-end-0">
-                <legend className="h6 w-auto p-0 pb-4">
-                  {t("editor.sections.organisation")}
-                </legend>
-                <br />
-                <span>
-                  <EditorSelect<"organisation.uri">
-                    fieldName="organisation.uri"
-                    required
-                    data={organisations}
-                    filter="contains"
-                  />
-                </span>
-              </fieldset>
               <fieldset className="p-0 mt-4 border border-start-0 border-end-0">
                 <legend className="h6 w-auto p-0 pb-4">
                   {t("editor.sections.localisation")}
