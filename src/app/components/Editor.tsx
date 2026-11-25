@@ -1,6 +1,6 @@
 import { List, ListItem, notify } from "design-react-kit";
 import { set } from "lodash";
-import { useCallback, useEffect } from "react";
+import { useCallback, useEffect, useMemo } from "react";
 import {
   FieldErrors,
   FieldPathByValue,
@@ -174,23 +174,28 @@ export default function Editor() {
   const { languages, setLanguages, resetLanguages } = useLanguagesStore();
   const { setCountrySections } = useCountryStore();
 
-  const organisations = organisationData
-    .flatMap((data) =>
-      data.organisations.map((organisation) => ({
-        text:
-          getLocalizedText(organisation.name, i18n.language) +
-          ("alternativeName" in organisation && organisation.alternativeName
-            ? ` (${getLocalizedText(organisation.alternativeName, i18n.language)})`
-            : ""),
-        value: organisation.id,
-        group:
-          getLocalizedText(data.name, i18n.language) +
-          (data.abbreviation
-            ? ` (${getLocalizedText(data.abbreviation, i18n.language)})`
-            : ""),
-      })),
-    )
-    .sort((a, b) => a.text.localeCompare(b.text, i18n.language));
+  // ~2'200 entries (incl. municipalities): only rebuild when the language changes
+  const organisations = useMemo(
+    () =>
+      organisationData
+        .flatMap((data) =>
+          data.organisations.map((organisation) => ({
+            text:
+              getLocalizedText(organisation.name, i18n.language) +
+              ("alternativeName" in organisation && organisation.alternativeName
+                ? ` (${getLocalizedText(organisation.alternativeName, i18n.language)})`
+                : ""),
+            value: organisation.id,
+            group:
+              getLocalizedText(data.name, i18n.language) +
+              (data.abbreviation
+                ? ` (${getLocalizedText(data.abbreviation, i18n.language)})`
+                : ""),
+          })),
+        )
+        .sort((a, b) => a.text.localeCompare(b.text, i18n.language)),
+    [i18n.language],
+  );
 
   const { showCountryExtensionVersion, setShowCountryExtensionVersion } =
     useITCountrySpecific();

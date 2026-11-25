@@ -2,27 +2,32 @@
 
 ## Organisations
 
-The data in the file `organisations.json` originates from the following sources:
+The data in the file `organisations.json` originates from [LINDAS](https://ld.admin.ch), the
+linked data service of the Swiss federal administration. The SPARQL queries live in
+`fetchLindas.ts`, each one writes a raw result file:
 
 - The seven departments and the Federal Chancellery (`departements.json`)
-```
-https://ld.admin.ch/sparql/#query=PREFIX%20schema%3A%20%3Chttp%3A%2F%2Fschema.org%2F%3E%0APREFIX%20rdf%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F1999%2F02%2F22-rdf-syntax-ns%23%3E%0APREFIX%20rdfs%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F01%2Frdf-schema%23%3E%0A%0ASELECT%20DISTINCT%20%3Fdepartment%20%3FnameDepDe%20%3FnameDepFr%20%3FnameDepIt%20%3FnameDepEn%20%3FaltNameDepDe%20%3FaltNameDepFr%20%3FaltNameDepIt%20%3FaltNameDepEn%20%3Foffice%20%3FnameDe%20%3FnameFr%20%3FnameIt%20%3FnameEn%20WHERE%20%7B%0A%20%20%0A%20%20%3Fdepartment%20schema%3AinDefinedTermSet%20%3Chttps%3A%2F%2Fld.admin.ch%2Fdimension%2Fdepartment%3E.%0A%0A%20%20OPTIONAL%20%7B%20%3Fdepartment%20schema%3Aname%20%3FnameDe.%20FILTER(lang(%3FnameDe)%20%3D%20%22de%22)%20%7D%0A%20%20OPTIONAL%20%7B%20%3Fdepartment%20schema%3Aname%20%3FnameFr.%20FILTER(lang(%3FnameFr)%20%3D%20%22fr%22)%20%7D%0A%20%20OPTIONAL%20%7B%20%3Fdepartment%20schema%3Aname%20%3FnameIt.%20FILTER(lang(%3FnameIt)%20%3D%20%22it%22)%20%7D%0A%20%20OPTIONAL%20%7B%20%3Fdepartment%20schema%3Aname%20%3FnameEn.%20FILTER(lang(%3FnameEn)%20%3D%20%22en%22)%20%7D%0A%0A%20%20OPTIONAL%20%7B%20%3Fdepartment%20schema%3AalternateName%20%3FaltNameDe.%20FILTER(lang(%3FaltNameDe)%20%3D%20%22de%22)%20%7D%0A%20%20OPTIONAL%20%7B%20%3Fdepartment%20schema%3AalternateName%20%3FaltNameFr.%20FILTER(lang(%3FaltNameFr)%20%3D%20%22fr%22)%20%7D%0A%20%20OPTIONAL%20%7B%20%3Fdepartment%20schema%3AalternateName%20%3FaltNameIt.%20FILTER(lang(%3FaltNameIt)%20%3D%20%22it%22)%20%7D%0A%20%20OPTIONAL%20%7B%20%3Fdepartment%20schema%3AalternateName%20%3FaltNameEn.%20FILTER(lang(%3FaltNameEn)%20%3D%20%22en%22)%20%7D%0A%20%20%0A%20%20OPTIONAL%20%7B%20%3Fdepartment%20schema%3Aname%20%3FnameDepDe.%20FILTER(lang(%3FnameDepDe)%20%3D%20%22de%22)%20%7D%0A%20%20OPTIONAL%20%7B%20%3Fdepartment%20schema%3Aname%20%3FnameDepFr.%20FILTER(lang(%3FnameDepFr)%20%3D%20%22fr%22)%20%7D%0A%20%20OPTIONAL%20%7B%20%3Fdepartment%20schema%3Aname%20%3FnameDepIt.%20FILTER(lang(%3FnameDepIt)%20%3D%20%22it%22)%20%7D%0A%20%20OPTIONAL%20%7B%20%3Fdepartment%20schema%3Aname%20%3FnameDepEn.%20FILTER(lang(%3FnameDepEn)%20%3D%20%22en%22)%20%7D%0A%0A%20%20OPTIONAL%20%7B%20%3Fdepartment%20schema%3AalternateName%20%3FaltNameDepDe.%20FILTER(lang(%3FaltNameDepDe)%20%3D%20%22de%22)%20%7D%0A%20%20OPTIONAL%20%7B%20%3Fdepartment%20schema%3AalternateName%20%3FaltNameDepFr.%20FILTER(lang(%3FaltNameDepFr)%20%3D%20%22fr%22)%20%7D%0A%20%20OPTIONAL%20%7B%20%3Fdepartment%20schema%3AalternateName%20%3FaltNameDepIt.%20FILTER(lang(%3FaltNameDepIt)%20%3D%20%22it%22)%20%7D%0A%20%20OPTIONAL%20%7B%20%3Fdepartment%20schema%3AalternateName%20%3FaltNameDepEn.%20FILTER(lang(%3FaltNameDepEn)%20%3D%20%22en%22)%20%7D%0A%0A%7D%0A&endpoint=https%3A%2F%2Fld.admin.ch%2Fquery&requestMethod=POST&tabTitle=Query&headers=%7B%7D&contentTypeConstruct=text%2Fturtle&contentTypeSelect=application%2Fsparql-results%2Bjson&outputFormat=table&outputSettings=%7B%22isEllipsed%22%3Atrue%2C%22compact%22%3Afalse%7D
-```
-
 - All offices of the seven departments (`offices.json`)
-```
-https://ld.admin.ch/sparql/#query=PREFIX%20schema%3A%20%3Chttp%3A%2F%2Fschema.org%2F%3E%0APREFIX%20rdf%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F1999%2F02%2F22-rdf-syntax-ns%23%3E%0APREFIX%20rdfs%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F01%2Frdf-schema%23%3E%0A%0ASELECT%20DISTINCT%20%3Fdepartment%20%3FnameDepDe%20%3FnameDepFr%20%3FnameDepIt%20%3FnameDepEn%20%3FaltNameDepDe%20%3FaltNameDepFr%20%3FaltNameDepIt%20%3FaltNameDepEn%20%3Foffice%20%3FnameDe%20%3FnameFr%20%3FnameIt%20%3FnameEn%20%3FaltNameDe%20%3FaltNameFr%20%3FaltNameIt%20%3FaltNameEn%20WHERE%20%7B%0A%20%0A%20%20%3Foffice%20schema%3AinDefinedTermSet%20%3Chttps%3A%2F%2Fld.admin.ch%2Foffice%3E.%0A%20%20%3Foffice%20schema%3AparentOrganization%20%3Fdepartment.%0A%0A%20%20OPTIONAL%20%7B%20%3Foffice%20schema%3Aname%20%3FnameDe.%20FILTER(lang(%3FnameDe)%20%3D%20%22de%22)%20%7D%0A%20%20OPTIONAL%20%7B%20%3Foffice%20schema%3Aname%20%3FnameFr.%20FILTER(lang(%3FnameFr)%20%3D%20%22fr%22)%20%7D%0A%20%20OPTIONAL%20%7B%20%3Foffice%20schema%3Aname%20%3FnameIt.%20FILTER(lang(%3FnameIt)%20%3D%20%22it%22)%20%7D%0A%20%20OPTIONAL%20%7B%20%3Foffice%20schema%3Aname%20%3FnameEn.%20FILTER(lang(%3FnameEn)%20%3D%20%22en%22)%20%7D%0A%0A%20%20OPTIONAL%20%7B%20%3Foffice%20schema%3AalternateName%20%3FaltNameDe.%20FILTER(lang(%3FaltNameDe)%20%3D%20%22de%22)%20%7D%0A%20%20OPTIONAL%20%7B%20%3Foffice%20schema%3AalternateName%20%3FaltNameFr.%20FILTER(lang(%3FaltNameFr)%20%3D%20%22fr%22)%20%7D%0A%20%20OPTIONAL%20%7B%20%3Foffice%20schema%3AalternateName%20%3FaltNameIt.%20FILTER(lang(%3FaltNameIt)%20%3D%20%22it%22)%20%7D%0A%20%20OPTIONAL%20%7B%20%3Foffice%20schema%3AalternateName%20%3FaltNameEn.%20FILTER(lang(%3FaltNameEn)%20%3D%20%22en%22)%20%7D%0A%20%20%0A%20%20%3Fdepartment%20schema%3AinDefinedTermSet%20%3Chttps%3A%2F%2Fld.admin.ch%2Fdepartment%3E.%0A%20%20%0A%20%20OPTIONAL%20%7B%20%3Fdepartment%20schema%3Aname%20%3FnameDepDe.%20FILTER(lang(%3FnameDepDe)%20%3D%20%22de%22)%20%7D%0A%20%20OPTIONAL%20%7B%20%3Fdepartment%20schema%3Aname%20%3FnameDepFr.%20FILTER(lang(%3FnameDepFr)%20%3D%20%22fr%22)%20%7D%0A%20%20OPTIONAL%20%7B%20%3Fdepartment%20schema%3Aname%20%3FnameDepIt.%20FILTER(lang(%3FnameDepIt)%20%3D%20%22it%22)%20%7D%0A%20%20OPTIONAL%20%7B%20%3Fdepartment%20schema%3Aname%20%3FnameDepEn.%20FILTER(lang(%3FnameDepEn)%20%3D%20%22en%22)%20%7D%0A%0A%20%20OPTIONAL%20%7B%20%3Fdepartment%20schema%3AalternateName%20%3FaltNameDepDe.%20FILTER(lang(%3FaltNameDepDe)%20%3D%20%22de%22)%20%7D%0A%20%20OPTIONAL%20%7B%20%3Fdepartment%20schema%3AalternateName%20%3FaltNameDepFr.%20FILTER(lang(%3FaltNameDepFr)%20%3D%20%22fr%22)%20%7D%0A%20%20OPTIONAL%20%7B%20%3Fdepartment%20schema%3AalternateName%20%3FaltNameDepIt.%20FILTER(lang(%3FaltNameDepIt)%20%3D%20%22it%22)%20%7D%0A%20%20OPTIONAL%20%7B%20%3Fdepartment%20schema%3AalternateName%20%3FaltNameDepEn.%20FILTER(lang(%3FaltNameDepEn)%20%3D%20%22en%22)%20%7D%0A%0A%7D%0A&endpoint=https%3A%2F%2Fld.admin.ch%2Fquery&requestMethod=POST&tabTitle=Query&headers=%7B%7D&contentTypeConstruct=text%2Fturtle&contentTypeSelect=application%2Fsparql-results%2Bjson&outputFormat=table&outputSettings=%7B%22pageSize%22%3A-1%7D
-```
-
 - The swiss cantons (`cantons.json`)
-```
-https://ld.admin.ch/sparql/#query=SELECT%20*%20WHERE%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%3FcantonUri%20a%20%3Chttps%3A%2F%2Fschema.ld.admin.ch%2FCanton%3E%20%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20OPTIONAL%20%7B%20%3FcantonUri%20%3Chttp%3A%2F%2Fschema.org%2Fname%3E%20%3FnameDe%20.%20FILTER%20(lang(%3FnameDe)%20%3D%20%22de%22)%20%7D%0A%20%20%20%20%20%20%20%20%20%20%20%20OPTIONAL%20%7B%20%3FcantonUri%20%3Chttp%3A%2F%2Fschema.org%2Fname%3E%20%3FnameFr%20.%20FILTER%20(lang(%3FnameFr)%20%3D%20%22fr%22)%20%7D%0A%20%20%20%20%20%20%20%20%20%20%20%20OPTIONAL%20%7B%20%3FcantonUri%20%3Chttp%3A%2F%2Fschema.org%2Fname%3E%20%3FnameIt%20.%20FILTER%20(lang(%3FnameIt)%20%3D%20%22it%22)%20%7D%0A%20%20%20%20%20%20%20%20%20%20%20%20OPTIONAL%20%7B%20%3FcantonUri%20%3Chttp%3A%2F%2Fschema.org%2Fname%3E%20%3FnameEn%20.%20FILTER%20(lang(%3FnameEn)%20%3D%20%22en%22)%20%7D%0A%20%20%20%20%20%20%20%20%7D&endpoint=https%3A%2F%2Fld.admin.ch%2Fquery&requestMethod=POST&tabTitle=Query&headers=%7B%7D&contentTypeConstruct=application%2Fn-triples%2C*%2F*%3Bq%3D0.9&contentTypeSelect=application%2Fsparql-results%2Bjson%2C*%2F*%3Bq%3D0.9&outputFormat=response
-```
+- The currently existing political municipalities (`municipalities.json`). Municipalities that
+  were merged into others are left out. In the editor they are grouped by canton and labelled
+  `Name (KT)`, so that e.g. the municipality `Bern (BE)` can't be confused with the canton `Bern`.
 
 Additionally, some special cases are added in `additional-organisations.json`. These are organisations are part of organisations returned in the above queries and must be added manually. It would be possible to fetch all organisations recursevely with the above queries, but that would yield too many organisations!
 
+The raw files can be (re-)fetched from LINDAS by running (all of them, or only the named ones):
 
-It can be (re-)generated by running:
+```bash
+npm run fetch:lindas
+npm run fetch:lindas -- municipalities
+```
+
+Municipalities merge every year on 1 January, so `municipalities.json` should be re-fetched
+early each year. Review the diff of the raw files before committing: LINDAS data changes over
+time, and organisations that disappear can no longer be resolved for existing `publiccode.yml`
+files.
+
+`organisations.json` can then be (re-)generated by running:
 
 ```bash
 npm run build:organisations
