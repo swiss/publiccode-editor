@@ -1,11 +1,24 @@
+import { getLocalizedText } from "../../i18n";
 import organisations from "./organisations.json";
 
-type Lang = "de" | "fr" | "it" | "en";
+// constants.ts reads import.meta.env, which Jest can't parse
+jest.mock("../contents/constants", () => ({ FALLBACK_LANGUAGE: "en" }));
+
+type Name = Partial<Record<"de" | "fr" | "it" | "en", string>>;
 type Organisation = {
   id: string;
-  name: Record<Lang, string>;
-  alternativeName?: Record<Lang, string>;
+  name: Name;
+  alternativeName?: Name;
 };
+
+const LANGUAGES = ["de", "fr", "it", "en"] as const;
+
+// built like in Editor.tsx
+const label = (o: Organisation, lang: string) =>
+  getLocalizedText(o.name as Record<string, string>, lang) +
+  (o.alternativeName
+    ? ` (${getLocalizedText(o.alternativeName as Record<string, string>, lang)})`
+    : "");
 
 const all: Organisation[] = organisations.flatMap(
   (group) => group.organisations,
@@ -23,17 +36,43 @@ describe("organisations.json", () => {
     expect(others.length).toBe(all.length - municipalities.length);
   });
 
-  it.each(["de", "fr", "it", "en"] as const)(
+  it("has no empty names", () => {
+    // missing languages must be left out, not written as "" (see removeEmptyNames)
+    for (const group of organisations as {
+      name: Name;
+      abbreviation?: Name;
+    }[]) {
+      for (const name of [group.name, group.abbreviation]) {
+        for (const value of Object.values(name ?? {})) {
+          expect(value.trim()).not.toBe("");
+        }
+      }
+    }
+    for (const o of all) {
+      for (const name of [o.name, o.alternativeName]) {
+        for (const value of Object.values(name ?? {})) {
+          expect(value.trim()).not.toBe("");
+        }
+      }
+    }
+  });
+
+  it.each(LANGUAGES)("has no blank labels in %s", (lang) => {
+    const blank = all.filter(
+      (o) => !/^\S.*\S$/.test(label(o, lang)) || label(o, lang).includes("()"),
+    );
+    expect(blank).toEqual([]);
+  });
+
+  it.each(LANGUAGES)(
     "has no two organisations with the same label in %s",
     (lang) => {
-      // organisation.name is set from the label (built like in Editor.tsx),
+      // organisation.name is set from the label,
       // so two organisations with equal labels would be indistinguishable
       const labelToIds = new Map<string, Set<string>>();
       for (const o of all) {
-        const label =
-          o.name[lang] +
-          (o.alternativeName ? ` (${o.alternativeName[lang]})` : "");
-        labelToIds.set(label, (labelToIds.get(label) ?? new Set()).add(o.id));
+        const text = label(o, lang);
+        labelToIds.set(text, (labelToIds.get(text) ?? new Set()).add(o.id));
       }
       const duplicates = [...labelToIds].filter(([, ids]) => ids.size > 1);
       expect(duplicates).toEqual([]);

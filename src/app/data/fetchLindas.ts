@@ -39,6 +39,8 @@ PREFIX schema: <http://schema.org/>
 SELECT DISTINCT ?department ?nameDepDe ?nameDepFr ?nameDepIt ?nameDepEn ?altNameDepDe ?altNameDepFr ?altNameDepIt ?altNameDepEn ?office ?nameDe ?nameFr ?nameIt ?nameEn ?altNameDe ?altNameFr ?altNameIt ?altNameEn WHERE {
   ?office schema:inDefinedTermSet <https://ld.admin.ch/office>.
   ?office schema:parentOrganization ?department.
+  # offices that were closed keep existing in LINDAS with an end date
+  FILTER NOT EXISTS { ?office schema:validThrough ?validThrough }
 
   ${LANG_NAMES("office", "name", "name")}
   ${LANG_NAMES("office", "alternateName", "altName")}

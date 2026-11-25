@@ -60,9 +60,9 @@ interface SPARQLResult {
 }
 
 interface MultilingualName {
-  de: string;
-  fr: string;
-  it: string;
+  de?: string;
+  fr?: string;
+  it?: string;
   en?: string;
 }
 
@@ -253,6 +253,8 @@ function generateOrganisations(): void {
   departments.push(...municipalityGroups);
   const municipalityCount = municipalityGroups.reduce((sum, g) => sum + g.organisations.length, 0);
 
+  removeEmptyNames(departments);
+
   fs.writeFileSync(outputPath, JSON.stringify(departments, null, 2) + '\n');
 
   console.log(`✓ Successfully generated ${outputPath}`);
@@ -260,6 +262,25 @@ function generateOrganisations(): void {
   console.log(`  - ${departments.reduce((sum, d) => sum + d.organisations.length, 0) - cantons.length - municipalityCount} organisations`);
   console.log(`  - ${cantons.length} cantons`);
   console.log(`  - ${municipalityCount} municipalities`);
+}
+
+// LINDAS doesn't have every name in every language. Leave missing languages out instead
+// of writing "", so getLocalizedText can fall back to another language.
+function removeEmptyNames(departments: Department[]): void {
+  const clean = (name?: MultilingualName) => {
+    if (!name) return undefined;
+    const entries = Object.entries(name).filter(([, value]) => value?.trim());
+    return entries.length > 0 ? (Object.fromEntries(entries) as MultilingualName) : undefined;
+  };
+
+  for (const department of departments) {
+    department.name = clean(department.name)!;
+    department.abbreviation = clean(department.abbreviation);
+    for (const organisation of department.organisations) {
+      organisation.name = clean(organisation.name)!;
+      organisation.alternativeName = clean(organisation.alternativeName);
+    }
+  }
 }
 
 const cantonNumber = (uri: string) => Number(uri.split('/').pop());
