@@ -1740,7 +1740,7 @@
     ]
   },
   {
-    "id": "https://ld.admin.ch/canton/1/municipalities",
+    "id": "https://ld.admin.ch/municipality/canton/1",
     "name": {
       "de": "Gemeinden – Zürich",
       "fr": "Communes – Zurich",
@@ -3197,7 +3197,7 @@
     ]
   },
   {
-    "id": "https://ld.admin.ch/canton/2/municipalities",
+    "id": "https://ld.admin.ch/municipality/canton/2",
     "name": {
       "de": "Gemeinden – Bern",
       "fr": "Communes – Berne",
@@ -6220,7 +6220,7 @@
     ]
   },
   {
-    "id": "https://ld.admin.ch/canton/3/municipalities",
+    "id": "https://ld.admin.ch/municipality/canton/3",
     "name": {
       "de": "Gemeinden – Luzern",
       "fr": "Communes – Lucerne",
@@ -6948,7 +6948,7 @@
     ]
   },
   {
-    "id": "https://ld.admin.ch/canton/4/municipalities",
+    "id": "https://ld.admin.ch/municipality/canton/4",
     "name": {
       "de": "Gemeinden – Uri",
       "fr": "Communes – Uri",
@@ -7136,7 +7136,7 @@
     ]
   },
   {
-    "id": "https://ld.admin.ch/canton/5/municipalities",
+    "id": "https://ld.admin.ch/municipality/canton/5",
     "name": {
       "de": "Gemeinden – Schwyz",
       "fr": "Communes – Schwyz",
@@ -7423,7 +7423,7 @@
     ]
   },
   {
-    "id": "https://ld.admin.ch/canton/6/municipalities",
+    "id": "https://ld.admin.ch/municipality/canton/6",
     "name": {
       "de": "Gemeinden – Obwalden",
       "fr": "Communes – Obwald",
@@ -7503,7 +7503,7 @@
     ]
   },
   {
-    "id": "https://ld.admin.ch/canton/7/municipalities",
+    "id": "https://ld.admin.ch/municipality/canton/7",
     "name": {
       "de": "Gemeinden – Nidwalden",
       "fr": "Communes – Nidwald",
@@ -7619,7 +7619,7 @@
     ]
   },
   {
-    "id": "https://ld.admin.ch/canton/8/municipalities",
+    "id": "https://ld.admin.ch/municipality/canton/8",
     "name": {
       "de": "Gemeinden – Glarus",
       "fr": "Communes – Glaris",
@@ -7663,7 +7663,7 @@
     ]
   },
   {
-    "id": "https://ld.admin.ch/canton/9/municipalities",
+    "id": "https://ld.admin.ch/municipality/canton/9",
     "name": {
       "de": "Gemeinden – Zug",
       "fr": "Communes – Zoug",
@@ -7779,7 +7779,7 @@
     ]
   },
   {
-    "id": "https://ld.admin.ch/canton/10/municipalities",
+    "id": "https://ld.admin.ch/municipality/canton/10",
     "name": {
       "de": "Gemeinden – Freiburg",
       "fr": "Communes – Fribourg",
@@ -8867,7 +8867,7 @@
     ]
   },
   {
-    "id": "https://ld.admin.ch/canton/11/municipalities",
+    "id": "https://ld.admin.ch/municipality/canton/11",
     "name": {
       "de": "Gemeinden – Solothurn",
       "fr": "Communes – Soleure",
@@ -9820,7 +9820,7 @@
     ]
   },
   {
-    "id": "https://ld.admin.ch/canton/12/municipalities",
+    "id": "https://ld.admin.ch/municipality/canton/12",
     "name": {
       "de": "Gemeinden – Basel-Stadt",
       "fr": "Communes – Bâle-Ville",
@@ -9864,7 +9864,7 @@
     ]
   },
   {
-    "id": "https://ld.admin.ch/canton/13/municipalities",
+    "id": "https://ld.admin.ch/municipality/canton/13",
     "name": {
       "de": "Gemeinden – Basel-Landschaft",
       "fr": "Communes – Bâle-Campagne",
@@ -10655,7 +10655,7 @@
     ]
   },
   {
-    "id": "https://ld.admin.ch/canton/14/municipalities",
+    "id": "https://ld.admin.ch/municipality/canton/14",
     "name": {
       "de": "Gemeinden – Schaffhausen",
       "fr": "Communes – Schaffhouse",
@@ -10906,7 +10906,7 @@
     ]
   },
   {
-    "id": "https://ld.admin.ch/canton/15/municipalities",
+    "id": "https://ld.admin.ch/municipality/canton/15",
     "name": {
       "de": "Gemeinden – Appenzell Ausserrhoden",
       "fr": "Communes – Appenzell Rhodes-Extérieures",
@@ -11103,7 +11103,7 @@
     ]
   },
   {
-    "id": "https://ld.admin.ch/canton/16/municipalities",
+    "id": "https://ld.admin.ch/municipality/canton/16",
     "name": {
       "de": "Gemeinden – Appenzell Innerrhoden",
       "fr": "Communes – Appenzell Rhodes-Intérieures",
@@ -11165,7 +11165,7 @@
     ]
   },
   {
-    "id": "https://ld.admin.ch/canton/17/municipalities",
+    "id": "https://ld.admin.ch/municipality/canton/17",
     "name": {
       "de": "Gemeinden – St. Gallen",
       "fr": "Communes – Saint-Gall",
@@ -11857,7 +11857,7 @@
     ]
   },
   {
-    "id": "https://ld.admin.ch/canton/18/municipalities",
+    "id": "https://ld.admin.ch/municipality/canton/18",
     "name": {
       "de": "Gemeinden – Graubünden",
       "fr": "Communes – Grisons",
@@ -12774,7 +12774,7 @@
     ]
   },
   {
-    "id": "https://ld.admin.ch/canton/19/municipalities",
+    "id": "https://ld.admin.ch/municipality/canton/19",
     "name": {
       "de": "Gemeinden – Aargau",
       "fr": "Communes – Argovie",
@@ -14555,7 +14555,7 @@
     ]
   },
   {
-    "id": "https://ld.admin.ch/canton/20/municipalities",
+    "id": "https://ld.admin.ch/municipality/canton/20",
     "name": {
       "de": "Gemeinden – Thurgau",
       "fr": "Communes – Thurgovie",
@@ -15292,7 +15292,7 @@
     ]
   },
   {
-    "id": "https://ld.admin.ch/canton/21/municipalities",
+    "id": "https://ld.admin.ch/municipality/canton/21",
     "name": {
       "de": "Gemeinden – Tessin",
       "fr": "Communes – Tessin",
@@ -16209,7 +16209,7 @@
     ]
   },
   {
-    "id": "https://ld.admin.ch/canton/22/municipalities",
+    "id": "https://ld.admin.ch/municipality/canton/22",
     "name": {
       "de": "Gemeinden – Waadt",
       "fr": "Communes – Vaud",
@@ -18926,7 +18926,7 @@
     ]
   },
   {
-    "id": "https://ld.admin.ch/canton/23/municipalities",
+    "id": "https://ld.admin.ch/municipality/canton/23",
     "name": {
       "de": "Gemeinden – Wallis",
       "fr": "Communes – Valais",
@@ -20041,7 +20041,7 @@
     ]
   },
   {
-    "id": "https://ld.admin.ch/canton/24/municipalities",
+    "id": "https://ld.admin.ch/municipality/canton/24",
     "name": {
       "de": "Gemeinden – Neuenburg",
       "fr": "Communes – Neuchâtel",
@@ -20274,7 +20274,7 @@
     ]
   },
   {
-    "id": "https://ld.admin.ch/canton/25/municipalities",
+    "id": "https://ld.admin.ch/municipality/canton/25",
     "name": {
       "de": "Gemeinden – Genf",
       "fr": "Communes – Genève",
@@ -20696,7 +20696,7 @@
     ]
   },
   {
-    "id": "https://ld.admin.ch/canton/26/municipalities",
+    "id": "https://ld.admin.ch/municipality/canton/26",
     "name": {
       "de": "Gemeinden – Jura",
       "fr": "Communes – Jura",

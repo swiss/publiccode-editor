@@ -24,7 +24,7 @@ const all: Organisation[] = organisations.flatMap(
   (group) => group.organisations,
 );
 const municipalityGroups = organisations.filter((group) =>
-  /^https:\/\/ld\.admin\.ch\/canton\/\d+\/municipalities$/.test(group.id),
+  /^https:\/\/ld\.admin\.ch\/municipality\/canton\/\d+$/.test(group.id),
 );
 const municipalities = municipalityGroups.flatMap((g) => g.organisations);
 
@@ -79,12 +79,23 @@ describe("organisations.json", () => {
     },
   );
 
+  it("has only the cantons group under the canton prefix", () => {
+    // the oss-catalog treats every id starting with this prefix as a canton
+    expect(
+      organisations
+        .map((g) => g.id)
+        .filter((id) => id.startsWith("https://ld.admin.ch/canton")),
+    ).toEqual(["https://ld.admin.ch/canton"]);
+  });
+
   it("has one municipality group per canton", () => {
     const cantons = organisations.find(
       (g) => g.id === "https://ld.admin.ch/canton",
     );
     expect(municipalityGroups.map((g) => g.id).sort()).toEqual(
-      cantons!.organisations.map((c) => `${c.id}/municipalities`).sort(),
+      cantons!.organisations
+        .map((c) => c.id.replace("/canton/", "/municipality/canton/"))
+        .sort(),
     );
   });
 

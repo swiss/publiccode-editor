@@ -298,7 +298,9 @@ function generateMunicipalityGroups(cantons: Canton[], municipalitiesData: Munic
       const abbreviation = municipalities[0].cantonAbbreviation.value;
 
       return {
-        id: `${canton.id}/municipalities`,
+        // Not under https://ld.admin.ch/canton/: the oss-catalog treats every id with that
+        // prefix as a canton. Not a real LINDAS URI, only a group id.
+        id: `https://ld.admin.ch/municipality/canton/${cantonNumber(canton.id)}`,
         name: {
           de: `Gemeinden – ${canton.name.de}`,
           fr: `Communes – ${canton.name.fr}`,
