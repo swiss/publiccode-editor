@@ -42,6 +42,17 @@ interface CantonResult {
   };
 }
 
+interface MunicipalityResult {
+  results: {
+    bindings: {
+      municipalityUri: SPARQLBinding;
+      name: SPARQLBinding;
+      cantonUri: SPARQLBinding;
+      cantonAbbreviation: SPARQLBinding;
+    }[];
+  };
+}
+
 interface SPARQLResult {
   results: {
     bindings: OfficeBinding[];
@@ -49,9 +60,9 @@ interface SPARQLResult {
 }
 
 interface MultilingualName {
-  de: string;
-  fr: string;
-  it: string;
+  de?: string;
+  fr?: string;
+  it?: string;
   en?: string;
 }
 
@@ -84,6 +95,7 @@ function generateOrganisations(): void {
   const departementsData: SPARQLResult = JSON.parse(fs.readFileSync(departementsPath, 'utf-8'));
   const additionalOrganisationsData: { id: string; organisations: Organisation[] }[] = JSON.parse(fs.readFileSync(additionalOrganisationsPath, 'utf-8'));
   const cantonsData: CantonResult = JSON.parse(fs.readFileSync(cantonsPath, 'utf-8'));
+  const municipalitiesData: MunicipalityResult = JSON.parse(fs.readFileSync(path.join(__dirname, 'municipalities.json'), 'utf-8'));
 
   // Group offices by department
   const departmentMap = new Map<string, {
@@ -236,12 +248,75 @@ function generateOrganisations(): void {
     organisations: cantons,
   });
 
+  // One group of municipalities per canton, in the official canton order (BFS number)
+  const municipalityGroups = generateMunicipalityGroups(cantons, municipalitiesData);
+  departments.push(...municipalityGroups);
+  const municipalityCount = municipalityGroups.reduce((sum, g) => sum + g.organisations.length, 0);
+
+  removeEmptyNames(departments);
+
   fs.writeFileSync(outputPath, JSON.stringify(departments, null, 2) + '\n');
-  
+
   console.log(`✓ Successfully generated ${outputPath}`);
-  console.log(`  - ${departments.length - 1} departments`);
-  console.log(`  - ${departments.reduce((sum, d) => sum + d.organisations.length, 0) - cantons.length} organisations`);
+  console.log(`  - ${departments.length - 1 - municipalityGroups.length} departments`);
+  console.log(`  - ${departments.reduce((sum, d) => sum + d.organisations.length, 0) - cantons.length - municipalityCount} organisations`);
   console.log(`  - ${cantons.length} cantons`);
+  console.log(`  - ${municipalityCount} municipalities`);
+}
+
+// LINDAS doesn't have every name in every language. Leave missing languages out instead
+// of writing "", so getLocalizedText can fall back to another language.
+function removeEmptyNames(departments: Department[]): void {
+  const clean = (name?: MultilingualName) => {
+    if (!name) return undefined;
+    const entries = Object.entries(name).filter(([, value]) => value?.trim());
+    return entries.length > 0 ? (Object.fromEntries(entries) as MultilingualName) : undefined;
+  };
+
+  for (const department of departments) {
+    department.name = clean(department.name)!;
+    department.abbreviation = clean(department.abbreviation);
+    for (const organisation of department.organisations) {
+      organisation.name = clean(organisation.name)!;
+      organisation.alternativeName = clean(organisation.alternativeName);
+    }
+  }
+}
+
+const cantonNumber = (uri: string) => Number(uri.split('/').pop());
+
+function generateMunicipalityGroups(cantons: Canton[], municipalitiesData: MunicipalityResult): Department[] {
+  return [...cantons]
+    .sort((a, b) => cantonNumber(a.id) - cantonNumber(b.id))
+    .map((canton) => {
+      const municipalities = municipalitiesData.results.bindings.filter(
+        (m) => m.cantonUri.value === canton.id,
+      );
+      if (municipalities.length === 0) {
+        throw new Error(`No municipalities found for canton ${canton.id}`);
+      }
+      const abbreviation = municipalities[0].cantonAbbreviation.value;
+
+      return {
+        // Not under https://ld.admin.ch/canton/: the oss-catalog treats every id with that
+        // prefix as a canton. Not a real LINDAS URI, only a group id.
+        id: `https://ld.admin.ch/municipality/canton/${cantonNumber(canton.id)}`,
+        name: {
+          de: `Gemeinden – ${canton.name.de}`,
+          fr: `Communes – ${canton.name.fr}`,
+          it: `Comuni – ${canton.name.it}`,
+          en: `Municipalities – ${canton.name.en}`,
+        },
+        abbreviation: { de: abbreviation, fr: abbreviation, it: abbreviation, en: abbreviation },
+        organisations: municipalities.map((m) => {
+          // Official names of homonymous municipalities already carry the canton, e.g. "Buchs (AG)"
+          const label = /\([A-Z]{2}\)$/.test(m.name.value)
+            ? m.name.value
+            : `${m.name.value} (${abbreviation})`;
+          return { id: m.municipalityUri.value, name: { de: label, fr: label, it: label, en: label } };
+        }),
+      };
+    });
 }
 
 try {

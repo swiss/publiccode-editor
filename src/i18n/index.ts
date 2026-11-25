@@ -93,5 +93,10 @@ export const getLocalizedText = (
   language: string = i18n.language,
 ): string => {
   const baseLanguage = language.split('-')[0];
-  return text[baseLanguage] || text[FALLBACK_LANGUAGE] || '';
+  return (
+    text[baseLanguage] ||
+    text[FALLBACK_LANGUAGE] ||
+    Object.values(text).find((value) => value?.trim()) ||
+    ''
+  );
 };

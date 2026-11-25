@@ -1,0 +1,79 @@
+name: Update organisations
+# Monthly refetch of the organisation data (federal offices, cantons, municipalities)
+# from LINDAS. Opens (or updates) a pull request labelled "organisations-update" when
+# organisations.json changed, so the change is reviewed before it is deployed.
+# The oss-catalog copies src/app/data/organisations.json from cd-bund, see
+# src/app/data/README.md.
+#
+# Requires "Allow GitHub Actions to create and approve pull requests" in the repository
+# settings (Settings → Actions → General).
+on:
+  schedule:
+    - cron: '0 6 1 * *'
+  workflow_dispatch:
+permissions:
+  contents: write
+  pull-requests: write
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    env:
+      BRANCH: update-organisations
+      LABEL: organisations-update
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: cd-bund
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+      - run: npm ci
+      - name: Fetch from LINDAS and regenerate
+        run: |
+          cp src/app/data/organisations.json "$RUNNER_TEMP/organisations-before.json"
+          npm run fetch:lindas
+          npm run build:organisations
+      - name: Test organisation data
+        run: npx jest src/app/data
+      - name: Open or update pull request
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          pr="$(gh pr list --head "$BRANCH" --state open --json number --jq '.[0].number // empty')"
+
+          if git diff --quiet -- src/app/data/organisations.json; then
+            echo "organisations.json is up to date"
+            if [ -n "$pr" ]; then
+              gh pr close "$pr" --delete-branch --comment "organisations.json on cd-bund is up to date with LINDAS."
+            fi
+            exit 0
+          fi
+
+          {
+            echo "Monthly update of the organisation data from [LINDAS](https://ld.admin.ch)."
+            echo
+            echo "Please check removed organisations: existing \`publiccode.yml\` files that use them"
+            echo "no longer get a name in the editor and the oss-catalog. Municipalities merge every"
+            echo "1 January."
+            echo
+            echo "After merging, copy \`src/app/data/organisations.json\` to the oss-catalog."
+            echo
+            npx tsx src/app/data/diffOrganisations.ts "$RUNNER_TEMP/organisations-before.json" src/app/data/organisations.json
+            echo
+            echo "_This pull request is updated by the Update organisations workflow._"
+          } > "$RUNNER_TEMP/body.md"
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git switch -c "$BRANCH"
+          git add src/app/data
+          git commit -m "chore: update organisations from LINDAS"
+          git push --force origin "$BRANCH"
+
+          gh label create "$LABEL" --color 1d76db --description "Organisation data refreshed from LINDAS" --force
+          if [ -n "$pr" ]; then
+            gh pr edit "$pr" --body-file "$RUNNER_TEMP/body.md"
+          else
+            gh pr create --base cd-bund --head "$BRANCH" --label "$LABEL" \
+              --title "chore: update organisations from LINDAS" --body-file "$RUNNER_TEMP/body.md"
+          fi
