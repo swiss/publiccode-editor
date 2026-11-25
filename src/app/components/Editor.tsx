@@ -174,12 +174,14 @@ export default function Editor() {
   const { languages, setLanguages, resetLanguages } = useLanguagesStore();
   const { setCountrySections } = useCountryStore();
 
-  // ~2'200 entries (incl. municipalities): only rebuild when the language changes
+  // ~2'200 entries (incl. municipalities): only rebuild when the language changes.
+  // Groups keep the order of organisations.json (federal departments, cantons,
+  // municipalities); only the entries within a group are sorted.
   const organisations = useMemo(
     () =>
-      organisationData
-        .flatMap((data) =>
-          data.organisations.map((organisation) => ({
+      organisationData.flatMap((data) =>
+        data.organisations
+          .map((organisation) => ({
             text:
               getLocalizedText(organisation.name, i18n.language) +
               ("alternativeName" in organisation && organisation.alternativeName
@@ -191,9 +193,9 @@ export default function Editor() {
               (data.abbreviation
                 ? ` (${getLocalizedText(data.abbreviation, i18n.language)})`
                 : ""),
-          })),
-        )
-        .sort((a, b) => a.text.localeCompare(b.text, i18n.language)),
+          }))
+          .sort((a, b) => a.text.localeCompare(b.text, i18n.language)),
+      ),
     [i18n.language],
   );
 
