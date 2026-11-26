@@ -113,7 +113,8 @@ export default function EditorSupports(): JSX.Element {
           </Table>
         )}
         <Button
-          color="primary"
+          color="secondary"
+          outline={true}
           onClick={() => append({ ...defaultSupport })}
         >
           {t("editor.form.addnew")}

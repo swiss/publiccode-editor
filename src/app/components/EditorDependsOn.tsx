@@ -199,7 +199,8 @@ function DependencyList({ type }: { type: DependencyType }): JSX.Element {
         )}
         <Button
           aria-label={`${t("editor.form.addnew")}: ${typeLabel}`}
-          color="primary"
+          color="secondary"
+          outline={true}
           innerRef={addButtonRef}
           onClick={() =>
             append(
