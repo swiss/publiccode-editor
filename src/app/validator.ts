@@ -20,15 +20,14 @@ declare function IsPublicCodeYmlValid(
   baseURL: string,
 ): Promise<string>;
 
-const path = "main.wasm";
-
-export async function loadWasm() {
+// base: where main.wasm is served; the embed passes the editor origin.
+export async function loadWasm(base: string | URL = document.baseURI) {
   try {
     const go = new Go();
 
     if (go) {
       const { instance } = await WebAssembly.instantiateStreaming(
-        fetch(path),
+        fetch(new URL("main.wasm", base)),
         go.importObject,
       );
       go.run(instance);
@@ -39,13 +38,6 @@ export async function loadWasm() {
     return null;
   }
 }
-
-loadWasm()
-  .catch((e) => console.error(`Failed to load Wasm: ${e}`))
-  .then((res) => {
-    console.log("loadWasm OK");
-    return res;
-  });
 
 interface ValidatorParams {
   publiccode: string;

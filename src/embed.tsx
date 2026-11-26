@@ -1,0 +1,73 @@
+// Runtime-loadable entry for hosts like opensource.admin.ch (issue #80):
+// `const { mount } = await import(".../embed.js"); const unmount = mount(el, { lang });`
+import i18n from "i18next";
+import { createRoot } from "react-dom/client";
+// shortcut: reactstrap is design-react-kit's dependency, not ours; add it to package.json if this import ever breaks.
+import { Modal, Tooltip } from "reactstrap";
+import App from "./app/App";
+import { loadWasm } from "./app/validator";
+
+// embed.js, embed.css, wasm_exec.js and main.wasm all sit at the root of the editor's dist.
+const base = new URL(".", import.meta.url);
+
+let wasm: Promise<unknown> | undefined;
+const loadValidator = () =>
+  (wasm ??= new Promise((resolve, reject) => {
+    const script = document.createElement("script");
+    script.src = new URL("wasm_exec.js", base).href;
+    script.onload = resolve;
+    script.onerror = reject;
+    document.head.append(script);
+  }).then(() => loadWasm(base)));
+
+async function loadStyles(shadow: ShadowRoot) {
+  const css = await (await fetch(new URL("embed.css", base))).text();
+  const sheet = new CSSStyleSheet();
+  // bootstrap declares its CSS variables on :root, which matches nothing inside a shadow root.
+  sheet.replaceSync(css.replace(/:root/g, ":host"));
+  shadow.adoptedStyleSheets = [sheet];
+
+  // @font-face is ignored inside a shadow root, so the fonts go on the document.
+  const fonts = new CSSStyleSheet();
+  for (const rule of sheet.cssRules)
+    if (rule instanceof CSSFontFaceRule) fonts.insertRule(rule.cssText);
+  document.adoptedStyleSheets = [...document.adoptedStyleSheets, fonts];
+  return () => {
+    document.adoptedStyleSheets = document.adoptedStyleSheets.filter(
+      (s) => s !== fonts,
+    );
+  };
+}
+
+export function mount(el: HTMLElement, { lang }: { lang: string }) {
+  const shadow = el.shadowRoot ?? el.attachShadow({ mode: "open" });
+  const container = document.createElement("div");
+  const portal = document.createElement("div");
+  shadow.append(container, portal);
+  // Modals and tooltips portal to <body> by default, outside the shadow root and its styles.
+  // Changing reactstrap's defaults here keeps the editor's components identical to upstream.
+  // shortcut: React 19 ignores defaultProps on function components (Tooltip); revisit on upgrade.
+  for (const c of [Modal, Tooltip] as { defaultProps?: object }[])
+    c.defaultProps = { ...c.defaultProps, container: portal };
+
+  const root = createRoot(container);
+  let unmounted = false;
+  let removeFonts = () => {};
+
+  loadValidator().catch((e) => console.error(`Failed to load Wasm: ${e}`));
+  Promise.all([i18n.changeLanguage(lang), loadStyles(shadow)]).then(
+    ([, remove]) => {
+      if (unmounted) return remove();
+      removeFonts = remove;
+      root.render(<App embedded />);
+    },
+  );
+
+  return () => {
+    unmounted = true;
+    root.unmount();
+    removeFonts();
+    container.remove();
+    portal.remove();
+  };
+}

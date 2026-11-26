@@ -9,7 +9,7 @@
   },
   "scripts": {
     "dev": "vite --port 3000",
-    "build": "tsc -b && vite build",
+    "build": "tsc -b && vite build && vite build -c vite.embed.config.ts",
     "lint": "eslint .",
     "preview": "vite preview",
     "predev": "npm run build:wasm",

@@ -14,7 +14,8 @@ import YamlPreview from "./components/YamlPreview";
 import { useIsMobile } from "./lib/utils";
 
 const NOTIFICATION_TIMEOUT = 4_000;
-export const App = () => {
+// embedded: rendered by src/embed.tsx inside a host page that has its own header.
+export const App = ({ embedded = false }: { embedded?: boolean }) => {
   const isMobile = useIsMobile();
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
   const [isLoading] = useState(false);
@@ -55,9 +56,13 @@ export const App = () => {
             closeOnClick={false}
             style={{ zIndex: 10 }}
           />
-          <div className="content__head">
-            <Head onSettingsClick={() => setIsSettingsOpen(!isSettingsOpen)} />
-          </div>
+          {!embedded && (
+            <div className="content__head">
+              <Head
+                onSettingsClick={() => setIsSettingsOpen(!isSettingsOpen)}
+              />
+            </div>
+          )}
           <SettingsPanel
             isOpen={isSettingsOpen}
             onClose={() => setIsSettingsOpen(false)}
