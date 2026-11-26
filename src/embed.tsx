@@ -20,12 +20,12 @@ const loadValidator = () =>
     document.head.append(script);
   }).then(() => loadWasm(base)));
 
-async function loadStyles(shadow: ShadowRoot) {
+async function loadStyles(...shadows: ShadowRoot[]) {
   const css = await (await fetch(new URL("embed.css", base))).text();
   const sheet = new CSSStyleSheet();
   // bootstrap declares its CSS variables on :root, which matches nothing inside a shadow root.
   sheet.replaceSync(css.replace(/:root/g, ":host"));
-  shadow.adoptedStyleSheets = [sheet];
+  for (const shadow of shadows) shadow.adoptedStyleSheets = [sheet];
 
   // @font-face is ignored inside a shadow root, so the fonts go on the document.
   const fonts = new CSSStyleSheet();
@@ -42,10 +42,18 @@ async function loadStyles(shadow: ShadowRoot) {
 export function mount(el: HTMLElement, { lang }: { lang: string }) {
   const shadow = el.shadowRoot ?? el.attachShadow({ mode: "open" });
   const container = document.createElement("div");
+  shadow.append(container);
+
+  // Modals and tooltips get their own styled shadow root directly under <body>: inside the host's
+  // layout, an ancestor with transform/filter/contain would turn their position: fixed into
+  // "relative to that ancestor" and push the dialogs off-screen.
+  const portalHost = document.createElement("div");
+  const portalShadow = portalHost.attachShadow({ mode: "open" });
   const portal = document.createElement("div");
-  shadow.append(container, portal);
-  // Modals and tooltips portal to <body> by default, outside the shadow root and its styles.
-  // Changing reactstrap's defaults here keeps the editor's components identical to upstream.
+  portalShadow.append(portal);
+  document.body.append(portalHost);
+  // reactstrap portals to <body> itself by default, outside any shadow root and its styles.
+  // Changing its defaults here keeps the editor's components identical to upstream.
   // shortcut: React 19 ignores defaultProps on function components (Tooltip); revisit on upgrade.
   for (const c of [Modal, Tooltip] as { defaultProps?: object }[])
     c.defaultProps = { ...c.defaultProps, container: portal };
@@ -55,19 +63,20 @@ export function mount(el: HTMLElement, { lang }: { lang: string }) {
   let removeFonts = () => {};
 
   loadValidator().catch((e) => console.error(`Failed to load Wasm: ${e}`));
-  Promise.all([i18n.changeLanguage(lang), loadStyles(shadow)]).then(
-    ([, remove]) => {
-      if (unmounted) return remove();
-      removeFonts = remove;
-      root.render(<App embedded />);
-    },
-  );
+  Promise.all([
+    i18n.changeLanguage(lang),
+    loadStyles(shadow, portalShadow),
+  ]).then(([, remove]) => {
+    if (unmounted) return remove();
+    removeFonts = remove;
+    root.render(<App embedded />);
+  });
 
   return () => {
     unmounted = true;
     root.unmount();
     removeFonts();
     container.remove();
-    portal.remove();
+    portalHost.remove();
   };
 }
