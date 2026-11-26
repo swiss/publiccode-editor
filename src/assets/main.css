@@ -1594,3 +1594,33 @@ OVERRIDE
     min-width: auto;
   }
 }
+
+/*
+ EMBEDDED (src/embed.tsx): the host page scrolls, not the editor columns
+ */
+
+.editor--embedded .content,
+.editor--embedded .content__wrapper {
+  height: auto;
+}
+
+.editor--embedded .content__editor-wrapper,
+.editor--embedded .content__main {
+  overflow: visible;
+}
+
+/* react-resizable-panels sets overflow: hidden inline, which disables position: sticky */
+.editor--embedded [data-panel-group],
+.editor--embedded [data-panel] {
+  overflow: visible !important;
+}
+
+/* side-by-side columns only; matches useIsMobile's 640px breakpoint */
+@media all and (min-width: 640px) {
+  .editor--embedded .content__sidebar {
+    position: sticky;
+    top: 0;
+    height: auto;
+    max-height: 100vh;
+  }
+}

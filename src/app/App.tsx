@@ -35,7 +35,7 @@ export const App = ({ embedded = false }: { embedded?: boolean }) => {
   );
 
   return (
-    <div>
+    <div className={embedded ? "editor--embedded" : undefined}>
       {isLoading && (
         <div className="d-flex align-items-center col-12 position-absolute h-100 w-100">
           <div className="mr-auto ml-auto">
