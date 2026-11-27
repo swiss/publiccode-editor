@@ -1620,7 +1620,7 @@ OVERRIDE
   .editor--embedded .content__sidebar {
     position: sticky;
     top: 0;
-    height: auto;
-    max-height: 100vh;
+    /* fixed height: the preview's flex-basis: 0 children collapse under height: auto */
+    height: 100vh;
   }
 }
