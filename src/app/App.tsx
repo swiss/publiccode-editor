@@ -1,6 +1,7 @@
 import "bootstrap-switzerland/dist/css/bootstrap-switzerland.min.css";
 import { NotificationManager } from "design-react-kit";
 import { useState } from "react";
+import { createPortal } from "react-dom";
 import { useTranslation } from "react-i18next";
 import { Panel, PanelGroup, PanelResizeHandle } from "react-resizable-panels";
 import "react-widgets/styles.css";
@@ -15,7 +16,14 @@ import { useIsMobile } from "./lib/utils";
 
 const NOTIFICATION_TIMEOUT = 4_000;
 // embedded: rendered by src/embed.tsx inside a host page that has its own header.
-export const App = ({ embedded = false }: { embedded?: boolean }) => {
+// portal: body-level node, so fixed overlays escape the host page's stacking contexts.
+export const App = ({
+  embedded = false,
+  portal,
+}: {
+  embedded?: boolean;
+  portal?: HTMLElement;
+}) => {
   const isMobile = useIsMobile();
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
   const [isLoading] = useState(false);
@@ -34,6 +42,16 @@ export const App = ({ embedded = false }: { embedded?: boolean }) => {
     </div>
   );
 
+  const notifications = (
+    <NotificationManager
+      duration={NOTIFICATION_TIMEOUT}
+      fix="top"
+      closeOnClick={false}
+      // above the host page's header when portaled; bootstrap modals are 1050
+      style={portal ? { position: "relative", zIndex: 1060 } : { zIndex: 10 }}
+    />
+  );
+
   return (
     <div className={embedded ? "editor--embedded" : undefined}>
       {isLoading && (
@@ -50,12 +68,7 @@ export const App = ({ embedded = false }: { embedded?: boolean }) => {
       )}
       <Layout isLoading={isLoading}>
         <div>
-          <NotificationManager
-            duration={NOTIFICATION_TIMEOUT}
-            fix="top"
-            closeOnClick={false}
-            style={{ zIndex: 10 }}
-          />
+          {portal ? createPortal(notifications, portal) : notifications}
           {!embedded && (
             <div className="content__head">
               <Head
