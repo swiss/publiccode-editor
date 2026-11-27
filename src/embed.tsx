@@ -23,7 +23,9 @@ const loadValidator = () =>
   }).then(() => loadWasm(base)));
 
 async function loadStyles(...shadows: ShadowRoot[]) {
-  const css = await (await fetch(new URL("embed.css", base))).text();
+  const res = await fetch(new URL("embed.css", base));
+  if (!res.ok) throw new Error(`embed.css: HTTP ${res.status}`);
+  const css = await res.text();
   const sheet = new CSSStyleSheet();
   // bootstrap declares its CSS variables on :root, which matches nothing inside a shadow root.
   sheet.replaceSync(css.replace(/:root/g, ":host"));
@@ -85,14 +87,13 @@ export function mount(el: HTMLElement, { lang }: { lang: string }) {
   let removeFonts = () => {};
 
   loadValidator().catch((e) => console.error(`Failed to load Wasm: ${e}`));
-  Promise.all([
-    i18n.changeLanguage(lang),
-    loadStyles(shadow, portalShadow),
-  ]).then(([, remove]) => {
-    if (unmounted) return remove();
-    removeFonts = remove;
-    root.render(<App embedded portal={portal} />);
-  });
+  Promise.all([i18n.changeLanguage(lang), loadStyles(shadow, portalShadow)])
+    .then(([, remove]) => {
+      if (unmounted) return remove();
+      removeFonts = remove;
+      root.render(<App embedded portal={portal} />);
+    })
+    .catch((e) => console.error(`Failed to load the editor: ${e}`));
 
   return () => {
     unmounted = true;
