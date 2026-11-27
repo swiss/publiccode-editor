@@ -15,15 +15,9 @@ import YamlPreview from "./components/YamlPreview";
 import { useIsMobile } from "./lib/utils";
 
 const NOTIFICATION_TIMEOUT = 4_000;
-// embedded: rendered by src/embed.tsx inside a host page that has its own header.
-// portal: body-level node, so fixed overlays escape the host page's stacking contexts.
-export const App = ({
-  embedded = false,
-  portal,
-}: {
-  embedded?: boolean;
-  portal?: HTMLElement;
-}) => {
+// portal: set only by src/embed.tsx, which renders inside a host page that has its own header.
+// It is a body-level node, so fixed overlays escape the host page's stacking contexts.
+export const App = ({ portal }: { portal?: HTMLElement }) => {
   const isMobile = useIsMobile();
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
   const [isLoading] = useState(false);
@@ -53,7 +47,7 @@ export const App = ({
   );
 
   return (
-    <div className={embedded ? "editor--embedded" : undefined}>
+    <div className={portal ? "editor--embedded" : undefined}>
       {isLoading && (
         <div className="d-flex align-items-center col-12 position-absolute h-100 w-100">
           <div className="mr-auto ml-auto">
@@ -69,7 +63,7 @@ export const App = ({
       <Layout isLoading={isLoading}>
         <div>
           {portal ? createPortal(notifications, portal) : notifications}
-          {!embedded && (
+          {!portal && (
             <div className="content__head">
               <Head
                 onSettingsClick={() => setIsSettingsOpen(!isSettingsOpen)}

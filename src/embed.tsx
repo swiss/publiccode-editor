@@ -91,7 +91,7 @@ export function mount(el: HTMLElement, { lang }: { lang: string }) {
     .then(([, remove]) => {
       if (unmounted) return remove();
       removeFonts = remove;
-      root.render(<App embedded portal={portal} />);
+      root.render(<App portal={portal} />);
     })
     .catch((e) => console.error(`Failed to load the editor: ${e}`));
 
