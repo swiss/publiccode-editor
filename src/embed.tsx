@@ -39,6 +39,26 @@ async function loadStyles(...shadows: ShadowRoot[]) {
   };
 }
 
+// document.activeElement stops at a shadow host. reactstrap's Modal reads it to cycle Tab inside the
+// dialog and to refocus the opening button on close, so hand it the element focused inside the shadow roots.
+const deepActiveElement = () => {
+  let active = document.activeElement;
+  while (active?.shadowRoot?.activeElement)
+    active = active.shadowRoot.activeElement;
+  return active;
+};
+const modal = Modal.prototype as unknown as {
+  init: () => void;
+  getFocusedChild: () => Element | null;
+  _triggeringElement: Element | null;
+};
+const init = modal.init;
+modal.init = function () {
+  init.call(this);
+  this._triggeringElement = deepActiveElement();
+};
+modal.getFocusedChild = deepActiveElement;
+
 export function mount(el: HTMLElement, { lang }: { lang: string }) {
   const shadow = el.shadowRoot ?? el.attachShadow({ mode: "open" });
   const container = document.createElement("div");
