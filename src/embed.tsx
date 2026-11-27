@@ -8,6 +8,8 @@ import App from "./app/App";
 import { loadWasm } from "./app/validator";
 
 // embed.js, embed.css, wasm_exec.js and main.wasm all sit at the root of the editor's dist.
+// Hosts on another origin need CORS on embed.js, embed.css and main.wasm: GitHub Pages sends Access-Control-Allow-Origin: *,
+// the nginx image in the Dockerfile sends nothing, so it can't serve the embed cross-origin as is.
 const base = new URL(".", import.meta.url);
 
 let wasm: Promise<unknown> | undefined;
