@@ -1609,18 +1609,13 @@ OVERRIDE
   overflow: visible;
 }
 
-/* react-resizable-panels sets overflow: hidden inline, which disables position: sticky */
-.editor--embedded [data-panel-group],
-.editor--embedded [data-panel] {
-  overflow: visible !important;
+/* the YAML preview grows with its content instead of scrolling inside the window height */
+.editor--embedded .content__sidebar {
+  height: auto;
 }
 
-/* side-by-side columns only; matches useIsMobile's 640px breakpoint */
-@media all and (min-width: 640px) {
-  .editor--embedded .content__sidebar {
-    position: sticky;
-    top: 0;
-    /* fixed height: the preview's flex-basis: 0 children collapse under height: auto */
-    height: 100vh;
-  }
+.editor--embedded .preview,
+.editor--embedded .preview__body {
+  flex-basis: auto;
+  overflow: visible;
 }
