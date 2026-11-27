@@ -1594,3 +1594,28 @@ OVERRIDE
     min-width: auto;
   }
 }
+
+/*
+ EMBEDDED (src/embed.tsx): the host page scrolls, not the editor columns
+ */
+
+.editor--embedded .content,
+.editor--embedded .content__wrapper {
+  height: auto;
+}
+
+.editor--embedded .content__editor-wrapper,
+.editor--embedded .content__main {
+  overflow: visible;
+}
+
+/* the YAML preview grows with its content instead of scrolling inside the window height */
+.editor--embedded .content__sidebar {
+  height: auto;
+}
+
+.editor--embedded .preview,
+.editor--embedded .preview__body {
+  flex-basis: auto;
+  overflow: visible;
+}
